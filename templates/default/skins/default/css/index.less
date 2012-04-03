@@ -1,0 +1,227 @@
+/**
+ *
+ * @copyright       Copyright 2012, Mark Zhao
+ * @license         CC-BY 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ * @link            http://www.vkmark.info
+ * @Author          Mark Zhao (zhaody901@126.com)
+ * @filename		index.less
+ * @description		首页的css文件配置
+ */
+
+@import 'common.less';
+
+.index-banner{
+	position: relative;
+	width:980px;
+	height:615px;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+.mosaic {
+	overflow: hidden;
+}
+.mosaic img{
+	position: absolute;
+	z-index:2;
+}
+.details{
+	width:100%;
+	position: absolute;
+	z-index:3;
+	color:#fff;
+	bottom:0px;
+	line-height:1.5em;
+}
+.details .mask{
+	background:#000;
+	filter:alpha(opacity=@filler);
+	-moz-opacity:@index_alpha;
+	opacity: @index_alpha;
+	position: absolute;
+	z-index:-1;
+}
+.details h4{
+	padding: 5px;
+	font-size:14px;
+	font-weight:bold;
+	z-index:3;
+}
+.details p{
+	padding: 5px;
+	z-index:3;
+}
+.banner-1{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:270px;
+	height:190px;
+}
+.banner-2{
+	position: absolute;
+	top:0px;
+	left:275px;
+	width:205px;
+	height:190px;
+}
+.banner-3{
+	position: absolute;
+	top:0px;
+	left:485px;
+	width:250px;
+	height:315px;
+}
+.banner-4{
+	position: absolute;
+	top:0px;
+	left:740px;
+	width:240px;
+	height:160px;
+}
+.banner-5{
+	position: absolute;
+	top:165px;
+	left:740px;
+	width:240px;
+	height:150px;
+}
+.banner-6{
+	position: absolute;
+	top:195px;
+	left:0px;
+	width:480px;
+	height:265px;
+}
+.banner-7{
+	position: absolute;
+	top:320px;
+	left:485px;
+	width:300px;
+	height:140px;
+}
+.banner-8{
+	position: absolute;
+	top:319px;
+	left:790px;
+	width:190px;
+	height:175px;
+}
+.banner-9{
+	position: absolute;
+	top:465px;
+	left:0;
+	width:210px;
+	height:150px;
+}
+.banner-10{
+	position: absolute;
+	top:465px;
+	left:215px;
+	width:385px;
+	height:150px;
+}
+.banner-11{
+	position: absolute;
+	top:465px;
+	left:605px;
+	width:180px;
+	height:150px;
+}
+.banner-12{
+	position: absolute;
+	top:500px;
+	left:790px;
+	width:190px;
+	height:115px;
+}
+
+.index-news h2{
+	background:url('@{base_dir}n_index_news_bg.png') no-repeat 0 0;
+	line-height:68px;
+	height:30px;
+	font-size:14px;
+	font-weight:bold;
+	padding-top:20px;
+}
+
+
+.index-news h2 a{
+
+}
+.index-news ul{
+	margin-top:1em;
+}
+.index-news ul li{
+	padding-left:10px;
+	margin-left:0;
+	background:url('@{base_dir}index_news_list_bg.gif') no-repeat 0 10px;
+	line-height:25px;
+	height:25px;
+	font-family:@font_song;
+}
+
+.index-plan .ym-230{
+	width:230px;
+	height:150px;
+}
+
+.plan-1{
+	background:url('@{base_dir}plan_01.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-2{
+	background:url('@{base_dir}plan_02.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-3{
+	background:url('@{base_dir}plan_03.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-4{
+	background:url('@{base_dir}plan_04.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-5{
+	background:url('@{base_dir}plan_05.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-6{
+	background:url('@{base_dir}plan_06.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-7{
+	background:url('@{base_dir}plan_07.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+.plan-8{
+	background:url('@{base_dir}plan_08.jpg') no-repeat 0 0px;
+	width:230px;
+	height:150px;
+}
+
+.s-index-ntitle-notice,
+.s-index-ntitle-info,
+.s-index-ntitle-news{
+	display: block;
+	background-image:url('@{base_dir}n_index_news_title_bg.jpg');
+	background-repeat:no-repeat;
+	width:320px;
+	height:28px;
+}
+
+.s-index-ntitle-notice{
+	background-position: 0px -28px;
+}
+.s-index-ntitle-info{
+	background-position: -320px -28px;
+}
+.s-index-ntitle-news{
+	background-position: -640px -28px;
+}

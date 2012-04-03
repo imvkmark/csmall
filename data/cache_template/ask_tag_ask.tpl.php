@@ -1,0 +1,4 @@
+<?php function _tag_ask_tag_ask($data, $number, $rows, $count, $page, $pages, $setting){ global $WSLM,$MODULE,$M,$CATEGORY,$TYPE,$AREA,$GROUP,$MODEL,$templateid,$_userid,$_username;@extract($setting);?><?php if(is_array($data)) foreach($data AS $n => $r) { ?>
+<li> <a href="<?php echo ask_url($r[askid]);?>" target="<?php echo $target;?>" title="<?php echo $r['title'];?>"><?php echo str_cut($r[title],$titlelen,'..');?></a> <?php if($showcatname) { ?> <a href="<?php echo $CATEGORY[$r['catid']]['url'];?>" style="color:gray">[<?php echo $CATEGORY[$r['catid']]['catname'];?>]</a><?php } ?></li>
+<?php } ?>
+<?php if($pages) { ?><p id="pages"><?php echo $pages;?></p><?php } ?><?php } ?>

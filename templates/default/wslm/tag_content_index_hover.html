@@ -1,0 +1,13 @@
+{loop $data $n $r}
+<img src="{$r[thumb]}" alt="{$r[title]}">
+<div class="details">
+{if $r[link]}
+	<a href="$r[link]" title="{$r[title]}">
+{/if}
+    <h4>{$r[title]}</h4>
+    <p>{$r[description]}</p>
+{if $r[link]}
+	</a>
+{/if}
+</div>
+{/loop}

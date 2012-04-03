@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS `wslm_yp_apply`;
+DROP TABLE IF EXISTS `wslm_yp_buy`;
+DROP TABLE IF EXISTS `wslm_yp_cert`;
+DROP TABLE IF EXISTS `wslm_yp_collect`;
+DROP TABLE IF EXISTS `wslm_yp_count`;
+DROP TABLE IF EXISTS `wslm_yp_guestbook`;
+DROP TABLE IF EXISTS `wslm_yp_job`;
+DROP TABLE IF EXISTS `wslm_yp_news`;
+DROP TABLE IF EXISTS `wslm_yp_product`;
+DROP TABLE IF EXISTS `wslm_yp_relation`;
+DROP TABLE IF EXISTS `wslm_yp_stats`;
+DROP TABLE IF EXISTS `wslm_yp_stock`;
+DELETE FROM `wslm_category` WHERE module = 'yp';
+DELETE FROM `wslm_menu` WHERE keyid = 'yp';
+DELETE FROM `wslm_model` WHERE modeltype = '9';
+DELETE FROM `wslm_model` WHERE modeltype = '2' AND tablename = 'company';
+DELETE FROM `wslm_block` WHERE pageid = 'ypindex';
+DELETE FROM `wslm_block` WHERE pageid = 'yphead';

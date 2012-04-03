@@ -1,0 +1,55 @@
+<?php defined('IN_WSLM') or exit('Access Denied'); ?><script language="javascript" src="images/js/ajaxfileupload.js"></script>
+<div class="window" style="width:600px;" id="upload">
+<form name="form" method="post" action="" enctype="multipart/form-data">
+<table cellpadding="0" cellspacing="0" class="table_form" style="margin-top:0;">
+<caption style="margin-top:0!important;"><a href="#" class="jqmClose"><img src="<?php echo WSLM_PATH;?>images/close.gif" alt="" height="16px" width="16px"/></a>上传头像</caption>
+  <tr>
+    <td width="167"><img id="previewpic" src="<?php echo $avatar;?>" width="150" height="150" /></td>
+     <td width="431">
+       <input name="preview" type="file" id="preview" size="15" />
+             <input type="hidden" name="oldname">
+             <input type="hidden" name="rename" value="<?php echo $rename;?>">
+             <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo UPLOAD_MAXSIZE;?>"> 
+             <input type="button" class="button_style" name="dosubmit" value=" 上传 " onclick="return ajaxFileUpload();"><font id="err" color="red"></font><br />图片最大为<?php echo sizecount(UPLOAD_MAXSIZE);?>,支持jpg|jpeg|gif|bmp|png格式
+  </td>
+   </tr>
+</table>
+</form>
+</div>
+<script language="javascript">
+uploadurl = "<?php echo UPLOAD_URL;?>";
+function ajaxFileUpload()
+{
+if($('#preview').val() == '') 
+{
+alert('上传头像为空');
+return false;
+}
+$.ajaxFileUpload
+(
+{
+url:"<?php echo $M['url'];?>upload.php?dosubmit=1",
+secureuri:false,
+fileElementId:'preview',
+dataType: 'script',
+success: function (data, status)
+{
+if(data.indexOf(uploadurl) != -1)
+{
+$('#avatarid').attr('src', data);
+$('#previewpic').attr('src', data);
+}
+else
+{
+$('#err').html(data);
+}
+},
+error: function (data, stauts, e)
+{
+alert(e);
+}
+}
+)
+return false;
+}
+</script>

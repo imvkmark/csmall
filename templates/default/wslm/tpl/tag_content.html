@@ -1,0 +1,10 @@
+{loop $data $n $r}
+		{$r[url]}
+		{$r[title]}
+		{$r[thumb]}
+		{$width}
+		{$height}
+		{str_cut($r[title], $titlen, '')}
+		{date($dateformat, $r['inputtime'])}
+{/loop}
+{template 'wslm', 'tpl_pager'}

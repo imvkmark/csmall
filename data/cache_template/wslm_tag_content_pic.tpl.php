@@ -1,0 +1,4 @@
+<?php function _tag_wslm_tag_content_pic($data, $number, $rows, $count, $page, $pages, $setting){ global $WSLM,$MODULE,$M,$CATEGORY,$TYPE,$AREA,$GROUP,$MODEL,$templateid,$_userid,$_username;@extract($setting);?><?php if(is_array($data)) foreach($data AS $n => $r) { ?>
+<li><a href="<?php echo $r['url'];?>" target="<?php echo $target;?>"><img src="<?php echo thumb($r[thumb], $width, $height);?>" width="<?php echo $width;?>" height="<?php echo $height;?>" alt="<?php echo $r['title'];?>" /></a><br /><a href="<?php echo $r['url'];?>" target="<?php echo $target;?>"><?php if($r[style]) { ?><span class="<?php echo $r['style'];?>"><?php echo str_cut($r[title], $titlelen,'');?></span><?php } else { ?><?php echo str_cut($r[title], $titlelen,'');?><?php } ?></a></li>
+<?php } ?>
+<?php if($pages) { ?><p id="pages"><?php echo $pages;?></p><?php } ?><?php } ?>

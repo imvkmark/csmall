@@ -1,0 +1,6 @@
+{loop $data $n $r}
+<li class="hastime">
+    <span class="time">{date('m/d',$r[inputtime])}</span>
+    <a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],50)}</a>
+</li>
+{/loop}

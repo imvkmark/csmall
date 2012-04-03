@@ -1,0 +1,1 @@
+<?php defined('IN_WSLM') or exit('Access Denied'); ?><img src="images/banner/banner_<?php echo $topid;?>.jpg" />
