@@ -162,7 +162,7 @@ switch($action)
 		break;
 
 	case 'manage':
-		if(count($CATEGORY) < 80)
+		if(count($CATEGORY) < 200)
 		{
 			$data = $cat->listinfo();
 			$categorys = array();
