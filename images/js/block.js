@@ -3,7 +3,7 @@ $(document).ready(function(){
   $(".show_block").attr("title", "参数包含变量的碎片不能在此维护");
   $(".show_tag").attr("style", "margin:5px;padding:5px;width:200px;text-align:center;cursor:pointer;background-color: #66FF00;border:#CCCCCC solid 1px;filter:Alpha(opacity=40);-moz-opacity:0.4;-khtml-opacity:0.4;opacity:0.4;");
   $(".show_tag").attr("title", "点击可修改，参数包含变量的中文标签不能在此预览");
-  $(".block_add").attr("style", "margin:5px;padding:5px;width:60px;text-align:center;cursor:pointer;background-color: yellow;border:#cccccc solid 1px;filter:Alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity:0.8;opacity:0.8;");
+  $(".block_add").attr("style", "line-height:1em;text-indent:0;margin:5px;padding:5px;width:60px;text-align:center;cursor:pointer;background-color: yellow;border:#cccccc solid 1px;filter:Alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity:0.8;opacity:0.8;");
   set_tag_float_div();
   set_block_float_div();
   $(".show_tag").click(function(){
