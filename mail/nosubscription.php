@@ -61,6 +61,7 @@ switch ($action)
             }
             $title = '订阅申请';
             $types = subtype($mod);
+            define('TPL_MAIL', true);
             include template($mod,"nosubscription_view");
         }
 	break;
