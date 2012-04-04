@@ -1,0 +1,8 @@
+{loop $data $n $r}
+<li class="cat-pro-item {if $count==1}ml-0{/if}">
+	<a href="{$r[url]}" title="{$r[title]}">
+		<img src="{$r['thumb']}" alt="{$r[title]}">
+		<p>{$r[title]}</p>
+	</a>
+</li>
+{/loop}

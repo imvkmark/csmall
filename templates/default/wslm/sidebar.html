@@ -1,0 +1,91 @@
+						{if $topid}
+						{php $subcat = subcat('wslm', $topid);}
+						<div class="submenu">
+							<h2>
+								{if $topid == 1}
+								{php $name='about';}
+								{/if}
+								{if $topid == 2}
+								{php $name='news';}
+								{/if}
+								{if $topid == 3}
+								{php $name='ser';}
+								{/if}
+								{if $topid == 4}
+								{php $name='culture';}
+								{/if}
+								{if $topid == 5}
+								{php $name='products';}
+								{/if}
+								{if $topid == 6}
+								{php $name='case';}
+								{/if}
+								{if $topid == 7}
+								{php $name='invest';}
+								{/if}
+								{if $topid == 8}
+								{php $name='contact';}
+								{/if}
+								<img src="{SKIN_PATH}images/insert/top_{$name}.jpg" alt="{$CATEGORY[$topid][catname]}" />
+								<span class="ym-hideme">{$CATEGORY[$topid][catname]}</span>
+							</h2>
+							<ul {if $topid==5}id="list_product_nav"{/if}>
+								{php $count=1}
+								{loop $subcat $n $r}
+								{if $topid==5}
+									{php $prosec = subcat('wslm', $r[catid]);}
+								{/if}
+								<li id="subcat_{$r[catid]}" 
+								class="{if count($subcat)==$count++}normalnobg{else}normal{/if} {if $prosec} nav {/if}">
+								<a href="{if $catid==19}{get_subLink($r[catid])}{else}{$r[url]}{/if}" title="{$r[catname]}">{$r[catname]}</a>
+										{if $prosec}
+										<!-- 产品二级分类 -->
+										<ul class="list-show-pro-subnav"><span class="left_arrow"></span>
+											{loop $prosec $pron $pror}
+											<li><a href="{$pror[url]}" title="{$pror[catname]}">{$pror[catname]}</a></li>
+											{/loop}
+										</ul>
+										{/if}
+								</li>
+								{/loop}
+							</ul>
+							<div class="s-submenu-bottom"></div>
+						</div>
+						{/if}
+						<div class="plan">
+							<h2>
+								<img src="{SKIN_PATH}images/insert/sidebar_service.jpg" alt="{$CATEGORY[19][catname]}" />
+								<span class="ym-hideme">{$CATEGORY[19][catname]}</span>
+							</h2>
+							<ul>
+								{php $data19 = subcat('wslm', 19);}
+								{php $count = 1}
+								{loop $data19 $n $r}
+									<li id="subcat_{$r[catid]}" class="normal">
+										<a href="{$r[url]}" title="{$r[catname]}">
+										<span>{$count}</span>
+										{$r[catname]}</a>
+									</li>
+									{php $count++;}
+								{/loop}
+							</ul>
+						</div>
+						<div class="contact">
+							<div class="title">
+								<img src="{SKIN_PATH}images/insert/sidebar_contact.jpg" alt="联系我们" />
+							</div>
+							<div class="tel">
+								{block('side_left_tel',1)}
+							</div>
+							<div class="links">
+								<a href="{$CATEGORY[61][url]}" title="{$CATEGORY[61][catname]}">
+									<img src="{SKIN_PATH}images/insert/button_msg.jpg" alt="在线留言" />
+								</a>
+								<a href="Tencent://Message/?Uin={$WSLM[qq]}">
+									<img src="{SKIN_PATH}images/insert/button_qq.jpg" alt="在线QQ" />
+								</a>
+								<a href="mail/nosubscription.php?action=do">
+									<img id="mail_subscription" src="{SKIN_PATH}images/insert/button_mail.jpg" alt="邮件订阅" />
+								</a>
+							</div>
+						</div>

@@ -1,0 +1,34 @@
+{template 'wslm', 'header'}
+			<!-- header end -->
+
+			<!-- banner start-->
+			{template 'wslm', 'banner'}
+			<!-- banner end -->
+
+			<!-- show start -->
+			<div class="ym-grid content">
+				<div class="ym-w260 ym-gl">
+					<div class="sidebar ym-gbox">
+						{template 'wslm', 'sidebar'}
+					</div>
+				</div>
+				<div class="ym-w715 ym-gr">
+					<div class="ym-gbox show">
+						<div class="s-content-title show-nav">
+							{template 'wslm', 'title'}
+						</div>
+						<div class="list-news">
+							{tag_list_news}
+							<div class="ym-clearfix"></div>
+						</div>
+						<div class="ym-clearfix"></div>
+						<div class="pages">
+							{template 'wslm', 'pages'}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- show end -->
+
+			<!-- footer start -->
+{template 'wslm', 'footer'}

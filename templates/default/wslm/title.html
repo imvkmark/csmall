@@ -1,0 +1,18 @@
+<div class="subnav">
+	{if in_array($topid,array())}
+		{catpos($catid)}
+	{else}
+		{if defined('TPL_MAIL')}
+		<a href="http://127.0.0.1/wslm/" title="首页"> 首页 </a><span>&gt;</span><a href="mail/nosubscription.php?action=do" title="邮件订阅">邮件订阅</a>
+		{else}
+		{cat_lmpos($catid, '<span>&gt;</span>', '', '首页')}
+		{/if}
+	{/if}
+</div>
+<div class="subtitle">
+	{if defined('TPL_MAIL')}
+	<h2>邮件订阅<span> MAIL SUBSCRIPTION</span></h2>
+	{else}
+	<h2>{$CATEGORY[$catid][catname]} <span> {php echo strtoupper($CATEGORY[$catid][catdir])}</span></h2>
+	{/if}
+</div>

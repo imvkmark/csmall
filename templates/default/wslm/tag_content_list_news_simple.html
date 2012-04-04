@@ -1,0 +1,16 @@
+<div class="list-news">
+{loop $data $n $r}
+<div class="simple-news-item">
+	<h3>
+		<span>{date('Y-m-d',$r[inputtime])}</span>
+		<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],56,'...')}</a></h3>
+</div>
+{/loop}
+	<div class="ym-clearfix"></div>
+</div>
+<div class="ym-clearfix"></div>
+<div class="pages">
+{if $pages}
+{$pages}
+{/if}
+</div>

@@ -1,0 +1,20 @@
+<div class="list-news">
+{loop $data $n $r}
+<div class="news-item">
+	{if $r[thumb]}
+	<img src="{$r['thumb']}" title="{$r[title]}" />
+	{else}
+	<img src="{SKIN_PATH}images/bg/pic_bg.jpg" title="{$r[title]}" />
+	{/if}
+	<h3><span>{date('Y-m-d',$r[inputtime])}</span><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],56,'...')}</a></h3>
+	<p>{str_cut($r[description],150,'...')}</p>
+</div>
+{/loop}
+	<div class="ym-clearfix"></div>
+</div>
+<div class="ym-clearfix"></div>
+<div class="pages">
+{if $pages}
+{$pages}
+{/if}
+</div>

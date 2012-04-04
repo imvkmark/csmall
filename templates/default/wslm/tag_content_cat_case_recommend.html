@@ -1,0 +1,14 @@
+				{php $count = 0;}
+				{loop $data $n $r}
+				<div class="{if $count%4 ==0}ym-w222{else}ym-w254{/if} {if ($count+3)%4==0}ym-gr{else}ym-gl{/if}">
+					<div class="ym-gbox cat-case-sucess {if $count%4 !=0}ml-32{/if}">
+						<div class="cat-sucess-pic">
+							<a href="{$r['url']}" title="{$r['title']}">
+								<img src="{$r['thumb']}" alt="{$r['title']}">
+							</a>
+						</div>
+						<h2><a href="{$r['url']}" title="{$r['title']}">{str_cut($r[title],25,'..')}</a></h2>
+					</div>
+				</div>
+				{php $count++;}
+				{/loop}

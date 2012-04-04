@@ -1,0 +1,94 @@
+
+<a href="{$CATEGORY[55][url]}" title="{$CATEGORY[55][catname]}"></a>
+{loop $data $n $r}
+{str_cut($r[title],49,'..')}
+
+{$r[description]}
+{str_cut($r[description],49,'..')}
+{$r[url]}
+<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],49,'..')}</a>
+<a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+{/loop}
+
+<!-- show -->
+	<div class="right_mbg l_line">
+		<div class="font_h col_40 show" >
+			<h4 class="contitle">{$title}{if $protype}[{$protype}]{/if}</h4>
+			<p class="cut"> 最近更新时间：{$updatetime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：<span id="hits">0</span></p>
+			<div class="content">{$content}</div>
+		</div>
+	</div>
+	<script language="JavaScript" src="count.php?contentid={$contentid}"></script>
+
+
+<!-- if -->
+{php $curUrl = $CATEGORY[$catid]['url'];}
+{php if (strpos($curUrl, 'about') !== false) :}
+
+{php elseif (strpos($curUrl, 'human') !== false):}
+
+{php elseif (strpos($curUrl, 'market') !== false):}
+
+{php elseif (strpos($curUrl, 'contact/entity') !== false):}
+
+{php elseif (strpos($curUrl, 'contact/online') !== false):}
+
+{php endif;}
+
+<!-- #left -->
+{php $data = subcat('main', 0);}
+{loop $data $n $r}
+	{if $r[ismenu]}
+	<li class="l_float">
+		{php $subcat = subcat('main', $r['catid']);}
+		{if $subcat}<!-- *有子元素 -->
+			{php $loop = 0;}
+			{loop $subcat $k $v}
+				<a href="{getsubLink($v[catid]}" id="menu_{$v['catid']}">{$v[catname]}</a>
+			{/loop}
+		{else}
+		<a href="{getsubLink($r[catid]}" id="menu_{$r['catid']}">{$r[catname]}</a>
+		{/if}
+	</li>
+	{/if}
+{/loop}
+
+
+
+<!-- #menu -->
+{php $menu = subcat('main', 0);}
+{php $menu_count = 1}
+{loop $menu $n $r}
+{if $r[ismenu]}
+{php if (count($menu)-1 == $menu_count):} 
+<li id="menu_{$r[catid]}" class="bli">
+{php else:}
+<li id="menu_{$r[catid]}">
+{php endif;}
+{php $menu_count++}
+	<a href="{get_sublink($r[catid])}" title="{$r[catname]}">{$r[catname]}</a>
+	<p>{$r[image]}</p>
+	<dl>
+		{php $submenu = subcat('main', $r[catid])}
+		{loop $submenu $sn $sr}
+		<dd
+		{if $r[catid] == 4} style="clear:both;width:180px;" {/if}
+		><a href="{get_sublink($sr[catid])}" title="{$sr[catname]}">{$sr[catname]}</a></dd>
+		{/loop}
+	</dl>
+</li>
+{/if}
+{/loop}
+
+<!-- footer -->
+<div class="footer">
+	<div class="bottom">
+		<!--版权和 ICP NO-->
+		{$WLSL[copyright]}{$WLSL[icpno]}
+	</div>
+</div>
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">麦谷网络</a> 
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站建设</a> 
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站制作</a>
+</body>
+</html>

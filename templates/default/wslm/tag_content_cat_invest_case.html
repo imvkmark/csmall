@@ -1,0 +1,6 @@
+{loop $data $n $r}
+<div class="cat-invest-case">
+	<a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+	<p><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],20,'..')}</a></p>
+</div>
+{/loop}

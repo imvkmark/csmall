@@ -1,0 +1,103 @@
+/**
+ *
+ * @copyright       Copyright 2012, Mark Zhao
+ * @license         CC-BY 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ * @link            http://www.vkmark.info
+ * @Author          Mark Zhao (zhaody901@126.com)
+ * @description		ie hacks for dongman website
+ */
+
+/*
+	类别
+*/
+/*关于我们*/
+.ym-w260{
+	_width:250px;
+}
+
+/*新闻*/
+.cat-news .ym-cbox{
+	_margin-bottom:3px;
+}
+.cat-news .news-list{
+	+margin-bottom:0.5em;
+}
+.cat-news .news-list ul{
+	+margin-bottom:0.5em;
+	_margin-bottom:0.5em;
+}
+/*团队*/
+.cat-team-wrapper .cat-team-item{
+	_display:inline;
+}
+/*产品*/
+.cat-products-nav,.cat-products-slide {
+	+height:340px;
+	_height:340px;
+}
+.cat-products-nav li.nav ul.cat-products-subnav{
+    _margin-left:20px;
+    _margin-top:-10px;
+    +margin-left:20px;
+    +margin-top:-10px;
+}
+
+.cat-products-slide div.hover{
+	+left:9px;
+	_left:9px;
+}
+
+.cat-products-new-div .cat-pro-item{
+	_display:inline;
+}
+.cat-case-sucess, .js-cat-case-sucess {
+	+height:228px;
+	_height:228px;
+}
+/*服务*/
+ .cat-ser_table td{
+ 	+padding:5px 10px;
+	_padding:5px 10px;
+}
+
+
+/*
+	列表页
+*/
+.show .list-news .news-item h3{
+	+background-position:-642px -784px;
+	+font-family:'微软雅黑';
+	_background-position:-640px -784px;
+
+}
+.show .pages{
+	+width:680px;
+	+padding-right:10px;
+}
+.sidebar .submenu ul li {
+	+margin-top:-3px;
+	_margin-top:-3px;
+}
+.show .subtitle,
+.sidebar .submenu,
+.sidebar .plan{
+	+font-family:'微软雅黑';
+}
+
+.show-contact .contact .textarea{
+	+width:274px;
+	_width:274px;
+}
+
+/* 首页 */
+.index-plan .ym-230 {
+	_display:inline;
+}
+.index-plan .plan {
+	_overflow:hidden;
+}
+
+/*单页*/
+.content .ym-gr{
+	_margin:0;
+}

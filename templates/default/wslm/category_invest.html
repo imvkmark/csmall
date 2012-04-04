@@ -1,0 +1,72 @@
+{template 'wslm', 'header'}
+			<!-- header end -->
+
+			<!-- banner start-->
+			{template 'wslm', 'banner'}
+			<!-- banner end -->
+
+			<!-- show start -->
+			<div class="ym-grid">
+				<h2><img src="{SKIN_PATH}images/insert/invest_category_ (2).jpg" alt="投资合作"></h2>
+				<h2 class="hasmore mt-10">
+					<img src="{SKIN_PATH}images/insert/invest_category_ (3).jpg" alt="投资分析">
+					<a href="{$CATEGORY[55][url]}" title="{$CATEGORY[55][catname]}" class="s-more-b"></a>
+				</h2>
+				<div class="ym-gbox">
+					{block('invest_analysis',1)}
+				</div>
+				<h2 class="mt-10"><img src="{SKIN_PATH}images/insert/invest_category_ (4).jpg" alt=""></h2>
+				<div class="ym-gbox">
+					{block('invest_flow',1)}
+				</div>
+				<h2 class="hasmore mt-10"><img src="{SKIN_PATH}images/insert/ser_title_4.jpg" alt="运营流程">
+					<a href="{$CATEGORY[56][url]}" title="{$CATEGORY[56][catname]}" class="s-more-b"></a>
+				</h2>
+				<div class="ym-gbox">
+					{block('invest_process',1)}
+				</div>
+			</div>
+			<div class="ym-grid">
+				<div class="ym-w470 ym-gl">
+					<div class="cat-invest-policy">
+						<h2 class="hasmore">
+							<img src="{SKIN_PATH}images/insert/invest_category_ (6).jpg" alt="合作政策" />
+							<a href="{$CATEGORY[57][url]}" title="{$CATEGORY[57][catname]}" class="s-more-b"></a>
+						</h2>
+						<div class="ym-wbox">
+							<table>
+								<tr>
+									<td><img src="{SKIN_PATH}images/insert/invest_pic.jpg" class="float-left" alt="合作政策" /></td>
+									<td>{block('invest_policy', 1)}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ym-w470 ym-gr">
+					<div class="cat-invest-problem">
+						<h2 class="hasmore">
+							<img src="{SKIN_PATH}images/insert/invest_category_ (7).jpg" alt="" />
+							<a href="{$CATEGORY[83][url]}" title="{$CATEGORY[83][catname]}" class="s-more-b"></a>
+						</h2>
+						<div class="ym-wbox">
+							{tag_cat_invest_question}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ym-grid">
+				<h2 class="hasmore"><img src="{SKIN_PATH}images/insert/invest_category_ (1).jpg" alt="">
+					<a href="{$CATEGORY[6][url]}" title="{$CATEGORY[6][catname]}" class="s-more-b"></a>
+				</h2>
+			</div>
+			<div class="ym-grid">
+				<div class="ym-gbox ym-gl">
+					{tag_cat_invest_case}
+				</div>
+			</div>
+			<!-- show end -->
+
+			<!-- footer start -->
+{template 'wslm', 'footer'}

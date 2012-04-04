@@ -1,0 +1,11 @@
+<dl>
+	{loop $data $n $r}
+	<dt><h4><span>{$r[username]}-{date('Y-m-d',$r[addtime])}</span>{$r[title]}</h4></dt>
+	<dd>回复:{$r[reply]}</dd>
+	{/loop}
+</dl>
+{if $pages}
+<div class="pages">
+	{$pages}
+</div>
+{/if}

@@ -1,0 +1,9 @@
+<div class="list-news">
+{loop $data $n $r}
+<div class="news-item">
+	<img src="{$r['thumb']}" title="{$r[title]}" />
+	<p>{$r[description]}</p>
+</div>
+{/loop}
+	<div class="ym-clearfix"></div>
+</div>
