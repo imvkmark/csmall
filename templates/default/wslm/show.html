@@ -1,2 +1,32 @@
-{template 'wslm','header'}
-{template 'wslm','footer'}
+{template 'wslm', 'header'}
+			<!-- header end -->
+
+			<!-- banner start-->
+			{template 'wslm', 'banner'}
+			<!-- banner end -->
+
+			<!-- show start -->
+			<div class="ym-grid content">
+				<div class="ym-w260 ym-gl">
+					<div class="sidebar ym-gbox">
+						{template 'wslm', 'sidebar'}
+					</div>
+				</div>
+				<div class="ym-w715 ym-gr">
+					<div class="show" class="ym-gbox-show">
+						<div class="s-content-title show-nav">
+							{template 'wslm', 'title'}
+						</div>
+						<div class="show-case">
+							<h3 class="title">{$title}</h3>
+							<p class="info">添加时间:{str_cut($inputtime, '10','')}&nbsp;&nbsp;&nbsp;浏览次数:<span id="hits">2012</span></p>
+							<script language="JavaScript" src="count.php?contentid={$contentid}"></script>
+							{$content}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- show end -->
+
+			<!-- footer start -->
+{template 'wslm', 'footer'}

@@ -1,26 +1,28 @@
 // 自定义全局变量
-var gm = new Object();
 $(function() {
     var ua = navigator.userAgent.toLowerCase();
     if (window.ActiveXObject)
-        gm.ie = ua.match(/msie ([\d.]+)/)[1]
+        Sys.ie = ua.match(/msie ([\d.]+)/)[1]
     else if (document.getBoxObjectFor)
-        gm.firefox = ua.match(/firefox\/([\d.]+)/)[1]
+        Sys.firefox = ua.match(/firefox\/([\d.]+)/)[1]
     else if (window.MessageEvent && !document.getBoxObjectFor)
-        gm.chrome = ua.match(/chrome\/([\d.]+)/)[1]
+        Sys.chrome = ua.match(/chrome\/([\d.]+)/)[1]
     else if (window.opera)
-        gm.opera = ua.match(/opera.([\d.]+)/)[1]
+        Sys.opera = ua.match(/opera.([\d.]+)/)[1]
     else if (window.openDatabase)
-        gm.safari = ua.match(/version\/([\d.]+)/)[1];
-    //console.log(gm);
+        Sys.safari = ua.match(/version\/([\d.]+)/)[1];
+    
+    /*添加首页hover*/
+	$('#menu_'+Sys.topid).addClass('hover');
+	$('#subcat_'+Sys.catid).addClass('active');
 	/* 首页 新闻 效果*/
 	$( ".index-news" ).hover(function(){
 		$( this ).find('h2').stop().animate( {backgroundPosition:"(-320px 0px)"}, {duration:200});
-		gm.idx_news_bp = $( this ).find('a').backgroundPosition();
-		$( this ).find('a').stop().animate( {backgroundPosition:"("+gm.idx_news_bp.x+' '+(gm.idx_news_bp.y+28)+")"}, {duration:200});
+		Sys.idx_news_bp = $( this ).find('a').backgroundPosition();
+		$( this ).find('a').stop().animate( {backgroundPosition:"("+Sys.idx_news_bp.x+' '+(Sys.idx_news_bp.y+28)+")"}, {duration:200});
 	} , function(){
 		$( this ).find('h2').stop().animate( {backgroundPosition:"(0px 0px)"}, {duration:200});
-		$( this ).find('a').stop().animate( {backgroundPosition:"("+gm.idx_news_bp.x+' '+(gm.idx_news_bp.y)+")"}, {duration:200});
+		$( this ).find('a').stop().animate( {backgroundPosition:"("+Sys.idx_news_bp.x+' '+(Sys.idx_news_bp.y)+")"}, {duration:200});
 	});
 
 	/* 首页banner 滑过显示*/
@@ -37,15 +39,15 @@ $(function() {
 	});
 
 	/* 首页banner 切换特效*/
-	$('#index_big_cycle').cycle({ 
-	    fx:    'fade', 
-	    speed:  2000 
+	$('#index_big_cycle').cycle({
+	    fx:    'fade',
+	    speed:  2000
 	 });
-	$('#index_small_cycle').cycle({ 
-	    fx:    'fade', 
-	    speed:  1500 
+	$('#index_small_cycle').cycle({
+	    fx:    'fade',
+	    speed:  1500
 	 });
-	
+
 	/* 首页规划图片特效*/
 	$('.index-plan a').css('display', 'none');
 	$('.index-plan>.ym-230>div').hover(function () {
@@ -57,28 +59,32 @@ $(function() {
 
 	/*导航渐进*/
 	$( "#nav>ul>li[class!=hover]>a" ).hover(function() {
-		gm.navpos = $(this).backgroundPosition();
-		$( this ).stop().animate( {backgroundPosition:"("+gm.navpos.x+' '+(gm.navpos.y+19)+")"}, {duration:200});
+		Sys.navpos = $(this).backgroundPosition();
+		$( this ).stop().animate( {backgroundPosition:"("+Sys.navpos.x+' '+(Sys.navpos.y+19)+")"}, {duration:200});
 	} , function(){
-		$( this ).stop().animate( {backgroundPosition:"("+gm.navpos.x+' '+gm.navpos.y+")"}, {duration:200});
+		$( this ).stop().animate( {backgroundPosition:"("+Sys.navpos.x+' '+Sys.navpos.y+")"}, {duration:200});
 	});
 
 
 	/*子菜单背景滑动*/
-	$( ".submenu>ul>li[class!=active]" ).hover(function(){
-		if ($(this).hasClass('normal')) {
-			$( this ).removeClass().addClass('normal')
+	$( ".submenu>ul>li" ).hover(function(){
+		if ($(this).hasClass('active')){
+			$(this).attr('woca', 'nnd');
+		} else if ($(this).hasClass('normal')) {
+			$( this ).removeClass('normal').addClass('normal')
 			.stop().animate( {backgroundPosition:"(-642px -1870px)"}, {duration:200});
 		} else if($(this).hasClass('normalnobg')) {
-			$( this ).removeClass().addClass('normalnobg')
+			$( this ).removeClass('normal').addClass('normalnobg')
 			.stop().animate( {backgroundPosition:"(-642px -1870px)"}, {duration:200});
 		}
 	}, function(){
-		if ($(this).hasClass('normal')) {
-			$( this ).removeClass().addClass('normal')
+		if ($(this).hasClass('active')){
+			$(this).attr('woca', 'ddn');
+		} else if ($(this).hasClass('normal')) {
+			$( this ).removeClass('normal').addClass('normal')
 			.stop().animate( {backgroundPosition:"(-642px -1898px)"}, {duration:200});
 		} else if($(this).hasClass('normalnobg')) {
-			$( this ).removeClass().addClass('normalnobg')
+			$( this ).removeClass('normalnobg').addClass('normalnobg')
 			.stop().animate( {backgroundPosition:"(-642px -1842px)"}, {duration:200});
 		}
 	});
@@ -100,22 +106,23 @@ $(function() {
 		产品栏目页图片滑过
 	*/
 	$('#cat_product_slide li').eq(0).find('img').css('border', '1px solid #fe9903');
+	$('#cat_product_slide>img').attr('src',$('#cat_product_slide li').eq(0).find('img').attr('bigsrc'));
 	$('#cat_product_slide li').mouseover(function(){
 		$('#cat_product_slide li').each(function(){
 			$(this).find('img').css('border', '1px solid #ccc');
 		})
 		$(this).find('img').css('border', '1px solid #fe9903');
 		var offsetLeft;
-		if (gm.ie=="6.0") {
+		if (Sys.ie=="6.0") {
 			offsetLeft = 9;
-		} else if(gm.ie="7.0") {
+		} else if(Sys.ie="7.0") {
 			offsetLeft = 9;
-		} else if(gm.ie="8.0") {
+		} else if(Sys.ie="8.0") {
 			offsetLeft = 8;
 		}else{
 			offsetLeft = 8;
 		}
-		
+
 		$('#cat_product_slide').find('.hover').stop().animate({top:$(this).position().top+51,left: offsetLeft}, 500);
 		$('#cat_product_slide>img').fadeOut(200).stop().attr('src', $(this).find('img').attr('bigsrc')).fadeIn(500);
 	})
@@ -135,7 +142,7 @@ $(function() {
 	/*
 		列表页产品分类鼠标滑过显示
 	*/
-	
+
 	$('#list_product_nav>li .list-show-pro-subnav').hide();
 	$('#list_product_nav>li.nav').hover(function(){
 		$('#list_product_nav>li').css('z-index', 1);
@@ -155,12 +162,12 @@ $(function() {
 	$(function(){
 		 var indexs = 0;
 		 var lens=$("#products_new > ul > li").length;
-		 gm.interval = setInterval('float_pros()', 3000);
+		 Sys.interval = setInterval('float_pros()', 3000);
 		 $('#products_new').css({"margin-left": "0px"}, 400, "swing");
 			$("#toright").click(function(){
 				if (indexs >= (lens-6) ) {
 					return
-				} else {		
+				} else {
 					indexs++
 				}
 				animatelefts(indexs)
@@ -168,9 +175,9 @@ $(function() {
 			$("#toleft").click(function(){
 				if (indexs <=0 ) {
 					return
-				} else {		
+				} else {
 					indexs--
-				}			
+				}
 				animatelefts(indexs)
 			})
 			function animatelefts(indexs){
@@ -178,23 +185,23 @@ $(function() {
 				$("#products_new > ul").stop(true,false).animate({left :-pro_width*(indexs)},1000);
 			}
 			$("#toright").hover(function(){
-				clearInterval(gm.interval);
+				clearInterval(Sys.interval);
 				$(this).addClass('s-cat-pro-right');
 			},function () {
 				$(this).removeClass('s-cat-pro-right');
-				gm.interval = setInterval('float_pros()', 3000);
+				Sys.interval = setInterval('float_pros()', 3000);
 			});
 			$("#toleft").hover(function(){
-				clearInterval(gm.interval);
+				clearInterval(Sys.interval);
 				$(this).addClass('s-cat-pro-left');
 			}, function () {
 				$(this).removeClass('s-cat-pro-left');
-				gm.interval = setInterval('float_pros()', 3000);
+				Sys.interval = setInterval('float_pros()', 3000);
 			})
 			$('#products_new>ul>li').hover(function(){
-				clearInterval(gm.interval);
+				clearInterval(Sys.interval);
 			}, function(){
-				gm.interval = setInterval('float_pros()', 3000);
+				Sys.interval = setInterval('float_pros()', 3000);
 			})
 	});
 
@@ -203,12 +210,12 @@ $(function() {
 	$(function(){
 		 var indexs = 0;
 		 var lens=$("#cat_team_move > li").length;
-		 gm.teaminterval = setInterval('float_team()', 3000);
+		 Sys.teaminterval = setInterval('float_team()', 3000);
 		 $('#cat_team_move').css({"margin-left": "0px"}, 400, "swing");
 			$("#team_toright").click(function(){
 				if (indexs >= (lens-4) ) {
 					return
-				} else {		
+				} else {
 					indexs++
 				}
 				animate_team(indexs)
@@ -216,9 +223,9 @@ $(function() {
 			$("#team_toleft").click(function(){
 				if (indexs <=0 ) {
 					return
-				} else {		
+				} else {
 					indexs--
-				}			
+				}
 				animate_team(indexs)
 			})
 			function animate_team(indexs){
@@ -227,25 +234,34 @@ $(function() {
 				$("#cat_team_move").stop(true,false).animate({left :-pro_width*(indexs)},1000);
 			}
 			$("#team_toright").hover(function(){
-				clearInterval(gm.teaminterval);
+				clearInterval(Sys.teaminterval);
 				$(this).addClass('s-cat-team-right');
 			},function () {
 				$(this).removeClass('s-cat-team-right');
-				gm.teaminterval = setInterval('float_team()', 3000);
+				Sys.teaminterval = setInterval('float_team()', 3000);
 			});
 			$("#team_toleft").hover(function(){
-				clearInterval(gm.teaminterval);
+				clearInterval(Sys.teaminterval);
 				$(this).addClass('s-cat-team-left');
 			}, function () {
 				$(this).removeClass('s-cat-team-left');
-				gm.teaminterval = setInterval('float_team()', 3000);
+				Sys.teaminterval = setInterval('float_team()', 3000);
 			})
 			$('#products_new>ul>li').hover(function(){
-				clearInterval(gm.teaminterval);
+				clearInterval(Sys.teaminterval);
 			}, function(){
-				gm.teaminterval = setInterval('float_team()', 3000);
+				Sys.teaminterval = setInterval('float_team()', 3000);
 			})
 	});
+
+	// 邮件订阅
+	$('#mail_subscription').click(function(){
+		$.blockUI({ 
+            message: $('#mail_subscription_ctr'), 
+            css: { top: '20%' } 
+        }); 
+	})
+
 })
 
 /* defined functions */
@@ -254,12 +270,12 @@ function float_pros(){
 	var idx = Number($('#cat_pro_new').attr('idx'));
 
 	if (idx == (clens-6) ){
-		gm.toright = false;
-	} 
-	if (idx == 0 ){		
-		gm.toright = true;	
+		Sys.toright = false;
 	}
-	if (gm.toright) { 
+	if (idx == 0 ){
+		Sys.toright = true;
+	}
+	if (Sys.toright) {
 		idx++;
 		$("#toright").trigger('click');
 	} else {
@@ -274,12 +290,12 @@ function float_team(){
 	var idx = Number($('#cat_team_move').attr('idx'));
 
 	if (idx == (clens-4) ){
-		gm.team_toright = false;
-	} 
-	if (idx == 0 ){		
-		gm.team_toright = true;	
+		Sys.team_toright = false;
 	}
-	if (gm.team_toright) { 
+	if (idx == 0 ){
+		Sys.team_toright = true;
+	}
+	if (Sys.team_toright) {
 		idx++;
 		$("#team_toright").trigger('click');
 	} else {

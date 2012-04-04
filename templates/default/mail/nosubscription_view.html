@@ -1,54 +1,69 @@
-{template 'member','header'}
-<script type="text/javascript" src="images/js/validator.js"></script>
-<div id="main">
-  {template $mod , 'left'}
-  <div id="right">
-    <p id="position"><strong>当前位置：</strong><a href="">首页</a><a href="{$M[url]}">邮件订阅</a>{$title}</p>
-    <div class="clear"></div>
-	<form action="{$MODULE[$mod]['url']}nosubscription.php?action=do" method="post" name ="thisForm" id="thisForm" >
-    <table cellpadding="0" cellspacing="1" class="table_form">
-      <caption>{$title}</caption>
-	   <tr>
-	    <th width="20%">类型</th>
-        <td style="text-align:left;">
-        {if !empty($types)}
-        {php $i=1}
-		{loop $types $key $type}
-		<span style="width:100px;">           
-		   <input type="checkbox"  value="{$type[typeid]}" id="typeid" name="typeid[]" class="checkbox_style"/> {$type['name']}</span>{php if($i%5 == 0) echo "<br />"}
-           {php $i++}
-		{/loop}
-        {else}
-        <span style="width:100px;color:red;">暂时无订阅类型......</span>
-        {/if}
-        </td>
-      </tr>
-	  <tr>
-	    <th>订阅邮箱</th>
-        <td style="text-align:left;">
-           <input type="text" name="mail" id="mail" value="{$em}" require="true" datatype="email" msg="填写正确的E-mail"/>            
-        </td>
-      </tr>
-    <tr>
-    <td></td>
-      <td style="text-align:left;">
-        <input type="submit" name="dosubmit" id="dobutton" value="订阅" />
-      </td>
-    </tr>
-    </table>
-	</form>	
-    <table cellspacing="1" cellpadding="0" class="table_info">
-      <caption>提示信息</caption>
-      <tr>
-        <td> 
-            输入你想要使用的订阅E-mai,同时选择你想要订阅的类型，点击<span style="color:red;">订阅</span>按钮,你订阅的E-mail将被放送一封确认连接地址，通过点击连接地址来确认你的订阅！<br/>
-        </td>
-      </tr>
-    </table>
-    <!--表单样式-->
-  </div>
+{template 'wslm', 'header'}
+<!-- header end -->
+
+<!-- banner start-->
+{template 'wslm', 'banner'}
+<!-- banner end -->
+
+<!-- show start -->
+<div class="ym-grid content mt-20">
+    <div class="ym-w260 ym-gl">
+        <div class="sidebar ym-gbox">{template 'wslm', 'sidebar'}</div>
+    </div>
+    <div class="ym-w715 ym-gr">
+        <div class="show ym-gbox" style="margin-top:0px;">
+            <div class="s-content-title show-nav">{template 'wslm', 'title'}</div>
+            <script type="text/javascript" src="images/js/validator.js"></script>
+            <div class="mail_sub">
+            <form action="{$MODULE[$mod]['url']}nosubscription.php?action=do" method="post" name ="thisForm" id="thisForm" >
+                <table cellpadding="0" cellspacing="1" class="contact">
+                    <caption>{$title}</caption>
+                    <tr>
+                        <th style="width:120px">类型</th>
+                        <td style="text-align:left;">
+                            {if !empty($types)}
+							{php $i=1}
+							{loop $types $key $type}
+                                <input type="checkbox"  value="{$type[typeid]}" id="typeid" name="typeid[]" class="checkbox_style"/>
+                                {$type['name']}
+                            {php if($i%5 == 0) echo "<br />"}
+							{php $i++}
+							{/loop}
+							{else}
+							暂时无订阅类型......
+							{/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>订阅邮箱</th>
+                        <td style="text-align:left;">
+                            <input type="text" name="mail" id="mail" value="{$em}" require="true" datatype="email" msg="填写正确的E-mail"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left;">
+                            <input type="submit" name="dosubmit" class="button" style="background:#ccc;padding:4px;border:none;" value="订阅" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <table cellspacing="1" cellpadding="0" class="table_info">
+                <caption><strong>提示信息</strong></caption>
+                <tr>
+                    <td>
+                        输入你想要使用的订阅E-mai,同时选择你想要订阅的类型，点击
+                        <span style="color:red;">订阅</span>
+                        按钮,你订阅的E-mail将被放送一封确认连接地址，通过点击连接地址来确认你的订阅！
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="clear"></div>
+<!-- show end -->
 <script type="text/javascript">
 <!--
 $().ready(function() {
@@ -56,4 +71,5 @@ $().ready(function() {
 });
 //-->
 </script>
-{template 'member','footer'}
+<!-- footer start -->
+{template 'wslm', 'footer'}

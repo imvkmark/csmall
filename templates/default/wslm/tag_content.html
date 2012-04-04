@@ -1,8 +1,6 @@
-<a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" width="{$width}" height="{$height}" /></a>
-{$r[url]}
-{$r[title]}
-{$r[thumb]}
-{$width}
-{$height}
-{str_cut($r[title], $titlen, '')}
-{date($dateformat, $r['inputtime'])}
+{loop $data $n $r}
+<li class="hastime">
+	<span class="time">{date('Y-m-d', $r['inputtime'])}</span>
+	<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title], 40, '')}</a>
+</li>
+{/loop}
