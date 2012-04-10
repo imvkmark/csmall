@@ -24,6 +24,9 @@ function set_type(type)
 		$('#type_'+type).addClass('selected');
 	}
 }
+	{if !$q}
+	window.location.href="{SITE_URL}";
+	{/if}
 </script>
 </head>
 <body>

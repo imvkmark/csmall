@@ -1,9 +1,0 @@
-{php $count=1}
-{loop $data $n $r}
-	<li class="cat-team-item {if $count==1}ml-0{/if}">
-		<a href="{$r[url]}" title="{$r[title]}">
-			<img src="{$r[thumb]}" alt="{$r[title]}">
-		</a>
-	</li>
-{php $count++}
-{/loop}

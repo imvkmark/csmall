@@ -1,9 +1,0 @@
-                {php $count=0;}
-                {loop $data $n $r}
-                <div class="ym-230 ym-gl {if $count%4 != 0}ml-20{/if} {if $count>3}mt-20{/if}">
-                    <div class="plan" style="background-image:url('{$r[background]}');">
-                    	<a href="{$r[link]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
-                    </div>
-                </div>
-                {php $count++}
-                {/loop}

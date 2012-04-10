@@ -1,5 +1,0 @@
-<ul>
-	{loop $data $n $r}
-	<li class="hastime"><a href="{$r[url]}" title="{$r[title]}">·{str_cut($r[title],49,'..')}</a><span class="timef">{date('Y-m-d', $r['inputtime'])}</span></li>
-	{/loop}
-</ul>

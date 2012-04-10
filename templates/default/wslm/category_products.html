@@ -1,77 +1,54 @@
 {template 'wslm', 'header'}
-			<!-- header end -->
+        <!-- header end -->
 
-			<!-- banner start-->
-			{template 'wslm', 'banner'}
-			<!-- banner end -->
-
-			<!-- show start -->
-			<div class="ym-grid mt-10">
-				<div class="ym-w196 ym-gl">
-					<div id="cat_product_nav" class="ym-gbox cat-products-nav">
-						<ul>
-							{php $count=1}
-							{php $procat = subcat('wslm', $topid);}
-							{loop $procat $n $r}
-							{if $count<13}
-							<li class="nav"><a href="{$r['url']}" title="{$r['catname']}">{$r['catname']}</a>
-								{php $prosubcat = subcat('wslm', $r['catid']);}
-								{if $prosubcat}
-								<ul class="cat-products-subnav"><span class="left_arrow"></span>
-									{loop $prosubcat $a $b}
-									<li><a href="{$b['url']}" title="{$b['catname']}">{$b['catname']}</a></li>
-									{/loop}
-								</ul>
-								{/if}
-							</li>
-							{php $count++}
-							{/if}
-							{/loop}
-						</ul>
-					</div>
-				</div>
-				<div class="ym-w765 ym-gr">
-					<div class="ym-gbox cat-products-slide">
-						<div id="cat_product_slide">
-							<img src="images/insert/cat_pro_slide_show.jpg" alt="">
-							<div class="hover"></div>
-							<ul>
-								{tag_cat_pro_slider}
-							</ul>
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_prosearch'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-products">
+                	{php $catlist = subcat('wslm', $topid);}
+                	{loop $catlist $cat}
+                	<div class="pro-gather">
+						<h3><a href="{$cat[url]}" title="{$cat[catname]}">{$cat[catname]}</a></h3>
+						<div class="pro-list">
+						{php $hasdata = false}
+						{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_product` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($cat[catid])." ORDER BY a.listorder DESC";}
+						{get sql="$sql"}
+						{php $hasdata = true}
+							<div class="pro-item">
+								<div class="pro-img">
+									<a href="{$r[url]}" title="{$r[title]}">
+										<img src="{$r[thumb]}" alt="{$r[title]}">
+										<div class="pro-imgcover png_bg"></div>
+									</a>
+								</div>
+								<h4><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],24,'..')}</a></h4>
+								<p>{str_cut(strip_tags($r[content]),80,'..')}</p>
+								<p><a href="{$r[url]}">查看详细&gt;&gt;</a></p>
+							</div>
+						{/get}
+						{if !$hasdata}
+							<div class="pro-item">
+								<h4>该分类下暂无商品</h4>
+							</div>
+						{/if}
 						</div>
 					</div>
-				</div>
-			</div>
+					<div class="clear"></div>
+                	{/loop}
+					<div class="clear"></div>
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
 
-			<div class="ym-grid">
-				<div id="cat_products_new" class="gbox cat-products-new">
-					<div class="cat-pro-new-left" id="toleft"></div>
-					<div class="cat-products-new-div" id="products_new">
-						<ul id="cat_pro_new" class="cat-products-new-ul" idx="1">
-							{tag_cat_pro_recommend}
-						</ul>
-					</div>
-					<div class="cat-pro-new-right" id="toright"></div>
-				</div>
-			</div>
-			<div class="ym-grid mt-30 mb-30">
-				<div class="ym-w300 ym-gl">
-					<div class="ym-gbox">
-						{block('cat_pro_euro',1)}
-					</div>
-				</div>
-				<div class="ym-w300 ym-gl ml-40">
-					<div class="ym-gbox">
-						{block('cat_pro_home',1)}
-					</div>
-				</div>
-				<div class="ym-w300 ym-gr">
-					<div class="ym-gbox">
-						{block('cat_pro_japan',1)}
-					</div>
-				</div>
-			</div>
-			<!-- show end -->
-
-			<!-- footer start -->
+        <!-- footer start -->
 {template 'wslm', 'footer'}

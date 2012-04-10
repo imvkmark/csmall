@@ -3,111 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta content="{$head[keywords]}" name="keywords" />
-	<meta content="{$head[description]}" name="description" />
-	<meta name="Author" content="麦谷网络 www.zgweb.com" />
-	<meta name="copyright"content="麦谷网络0531-62320000 87155088" />
-	<!-- 栏目关键字关键词-->
-	{if $catid}
-	{php $cus_file = "category_$catid.php"; }
-	{php $cus_meta = cache_read($cus_file); }
-	<meta content="{$cus_meta[meta_keywords]}" name="keywords" />
-	<meta content="{$cus_meta[meta_description]}" name="description" />
-	{/if}
-    <title>{$head[title]}</title>
+    <meta content="{$head[description]}" name="description" />
+    <meta name="Author" content="麦谷网络 www.zgweb.com" />
+    <meta name="copyright"content="麦谷网络0531-62320000 87155088" />
+    {if $catid}<!-- 栏目关键字关键词-->
+    {php $cus_file = "category_$catid.php"; }
+    {php $cus_meta = cache_read($cus_file); }
+    <meta content="{$cus_meta[meta_keywords]}" name="keywords" />
+    <meta content="{$cus_meta[meta_description]}" name="description" />
+    {/if}
+    <title>{$head[title]} - {$WSLM[sitename]}</title>
     <!-- topid 和 result判断 -->
     {php $topid = get_topid($catid); }
-    {php if($topid == 0 && isset($result)): }
+    {php if($topid == 0 && isset($q)): }
         {php $is_result = true; }
     {php elseif ($topid == 0): }
         {php $is_index = true; }
     {php endif; }
     <!-- end topid and result 判断 -->
     <link rel="stylesheet" type="text/css" href="{CSS_PATH}yui3reset.css" media="all">
-    <link rel="stylesheet" type="text/css" href="{CSS_PATH}yaml/core/base.css" media="all">
-    {if defined('TPL_INDEX')}
-    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}css/index.css">
-    {/if}
-    {if defined('TPL_CATEGORY')}
-    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}css/category.css">
-    {/if}
-    {if defined('TPL_LIST')}
-    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}css/list.css">
-    {/if}
-    {if defined('TPL_SHOW')|| defined('TPL_MAIL')}
-    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}css/show.css">
-    {/if}
-    <script type="text/javascript" src="{JS_PATH}jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="{JS_PATH}add-ons/jquery.effects.core.js"></script>
-    <script type="text/javascript" src="{JS_PATH}add-ons/jquery.cycle.all.js"></script>
-    <script type="text/javascript" src="{JS_PATH}add-ons/jquery.bgpos.js"></script>
-    <!--[if lte IE 7]>
-    <link href="{CSS_PATH}yaml/core/iehacks.css" rel="stylesheet" type="text/css" />
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}style/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}{SKIN_PATH}style/style.css" media="all">
+    <base href="{SITE_URL}" target="_self" />
 
-    <!--[if lt IE 9]>
-    <script src="{JS_PATH}html5.js"></script>
-    <link href="{SITE_URL}{SKIN_PATH}css/iehacks.css" rel="stylesheet" type="text/css" />
-    <![endif]-->
-    <!-- login area for js -->
-	<script type="text/javascript">
-		window.domain = location.host;
+    <script type="text/javascript">
+        window.domain = location.host;
         var Sys = {};
         Sys.topid = {$topid};
         {if $catid}
         Sys.catid = {$catid};
         {/if}
-	</script>
-	<!-- end for login area -->
+    </script>
+    <script type="text/javascript" src="{JS_PATH}jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{JS_PATH}add-ons/jquery.bgpos.js"></script>
     <script type="text/javascript" src="{SITE_URL}{SKIN_PATH}js/affect.js"></script>
-    <base href="{SITE_URL}" target="_self" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="{JS_PATH}html5.js"></script>
+    <![endif]-->
 </head>
-<body>
-    <div class="ym-wrapper">
-        <div class="ym-wbox">
-            <!-- header start -->
-            <div class="header">
-                <div class="logo">
-                    <a href="{SITE_URL}" title="{$WLSL[sitename]}">
-                        <img src="{SITE_URL}{SKIN_PATH}images/insert/logo.jpg" alt="" />
-                    </a>
-                </div>
-                <div id="nav" class="nav">
-                    <ul>
-                        <li id="menu_1">
-                            <a class="s-nav-us" href="{$CATEGORY[1][url]}" title="{$CATEGORY[1][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_2">
-                            <a class="s-nav-news" href="{$CATEGORY[2][url]}" title="{$CATEGORY[2][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_3">
-                            <a class="s-nav-ser" href="{$CATEGORY[3][url]}" title="{$CATEGORY[3][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_4">
-                            <a class="s-nav-culture" href="{$CATEGORY[29][url]}" title="{$CATEGORY[4][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_5">
-                            <a class="s-nav-products" href="{$CATEGORY[5][url]}" title="{$CATEGORY[5][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_6">
-                            <a class="s-nav-case" href="{$CATEGORY[6][url]}" title="{$CATEGORY[6][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_7">
-                            <a class="s-nav-invest" href="{$CATEGORY[7][url]}" title="{$CATEGORY[7][catname]}"></a>
-                            <span class="s-nav-line"></span>
-                        </li>
-                        <li id="menu_8">
-                            <a class="s-nav-contact" href="{$CATEGORY[60][url]}" title="{$CATEGORY[8][catname]}"></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tel">
-                	{block('tel',1)}
-                </div>
-            </div>
-            <!-- header end -->
+<body {if $is_index}class="index"{else}class="page"{/if}>
+<div class="wrapper">
+    <!-- header start -->
+    <header>
+        <h1 class="logo">
+            <a href="{SITE_URL}"  title="{$WSLM['sitename']}">
+                <span class="hideme">{$WSLM['sitename']}</span>
+            </a>
+        </h1>
+        <div class="topnav">
+            <a class="mail" href="" title="{}"></a>
+            <a class="products" href="" title="{}"></a>
+            <a class="message" href="" title="{}"></a>
+            <a class="cn" href="" title="{}"></a>
+            <a class="en" href="" title="{}"></a>
+        </div>
+        <div class="search png_bg">
+            <form action="{SITE_URL}search/" method="get">
+                <input type="hidden" name="type" value="all">
+                <input type="text" class="text" name="q" value="请输入关键词" />
+                <input type="submit" class="submit" value=" "/>
+            </form>
+        </div>
+    </header>
+    <nav class="top">
+        <ul>
+            <li id="menu_1">
+                <a class="aboutus" href="{get_sublink(1)}" title="{$CATEGORY[1][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 1);}
+                {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li id="menu_2">
+                <a class="news" href="{get_sublink(2)}" title="{$CATEGORY[2][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 2);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li id="menu_3">
+                <a class="products" href="{$CATEGORY[3][url]}" title="{$CATEGORY[3][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 3);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li id="menu_4">
+                <a class="use" href="{get_sublink(4)}" title="{$CATEGORY[4][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 4);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li  id="menu_5">
+                <a class="honor" href="{get_sublink(5)}" title="{$CATEGORY[5][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 5);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li  id="menu_6">
+                <a class="progress" href="{get_sublink(6)}" title="{$CATEGORY[6][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 6);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li id="menu_7">
+                <a class="partner" href="{get_sublink(7)}" title="{$CATEGORY[7][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 7);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li id="menu_8">
+                <a class="jobs" href="{get_sublink(8)}" title="{$CATEGORY[8][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 8);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li  id="menu_22">
+                <a class="message" href="{get_sublink(22)}" title="{$CATEGORY[22][catname]}"></a><span class="cut"></span>
+                {php $menu = subcat('wslm', 22);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+            <li  id="menu_23">
+                <a class="contact" href="{get_sublink(31)}" title="{$CATEGORY[31][catname]}"></a>
+                {php $menu = subcat('wslm', 23);}
+                    {if $menu}
+                <ul class="top-submenu">
+                    {loop $menu $r}
+                    <li>
+                        <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </li>
+        </ul>
+    </nav>
+    {if $is_index}
+    <div id="idxBanner" class="banner">
+        <img src="{SKIN_PATH}images/idx_banner1.jpg" alt="Banner">
+        <img src="{SKIN_PATH}images/idx_banner2.jpg" alt="Banner">
+        <img src="{SKIN_PATH}images/idx_banner3.jpg" alt="Banner"></div>
+    {else}
+    <div class="banner">
+        {if $is_result}
+        <img src="{SITE_URL}{SKIN_PATH}images/banner_5.jpg" alt="Banner">
+        {else}
+        <img src="{SITE_URL}{SKIN_PATH}images/banner_{$topid}.jpg" alt="Banner">
+        {/if}
+    </div>
+    {/if}
+    <!-- header end -->

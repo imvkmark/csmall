@@ -1,97 +1,107 @@
 {template 'wslm', 'header'}
-			<!-- header end -->
+    
+        <!-- header end -->
 
-			<!-- banner start-->
-			{template 'wslm', 'banner'}
-			<!-- banner end -->
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                {if $catid==22}
+                <div class="list-message">
+                    <form name="myform" action="formguide/index.php" method="post" enctype="multipart/form-data">
+                        <table class="message-table">
+                            <colgroup>
+                            <col style="width:120px;text-align:right;">
+                            <col style="width:420px"></colgroup>
+                        <tr>
+                            <th>标题</th>
+                            <td>
+                                <input type="text" name="info[title]" id="title" value=""  class="inputclass"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>内容</th>
+                            <td>
+                                <textarea name="info[content]" id="content" class="" ></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>公司名称</th>
+                            <td>
+                                <input type="text" name="info[companyname]" id="companyname" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>地址</th>
+                            <td>
+                                <input type="text" name="info[address]" id="address" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>邮编</th>
+                            <td>
+                                <input type="text" name="info[code]" id="code" value=""  class="short"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>联系人</th>
+                            <td>
+                                <input type="text" name="info[contact]" id="contact" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>电话</th>
+                            <td>
+                                <input type="text" name="info[tel]" id="tel" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>移动电话</th>
+                            <td>
+                                <input type="text" name="info[mobile]" id="mobile" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>传真</th>
+                            <td>
+                                <input type="text" name="info[fax]" id="fax" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>电子邮箱</th>
+                            <td>
+                                <input type="text" name="info[email]" id="email" value=""  class=""  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="hidden" name="dataid" value="" />
+                                <input type="hidden" name="formid" value="1" />
+                                <input type="submit" name="dosubmit" value=" "  class="submit" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="reset" name="reset" value=" "  class="reset" />
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+                {else}
+                <div class="singlepage">
+                    {block("cat_$catid", 1)}
+                </div>
+                {/if}
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
 
-			<!-- show start -->
-			<div class="ym-grid content">
-				<div class="ym-w260 ym-gl">
-					<div class="sidebar ym-gbox">
-						{template 'wslm', 'sidebar'}
-					</div>
-				</div>
-				<div class="ym-w715 ym-gr">
-					<div class="show" class="ym-gbox-show">
-						<div class="s-content-title show-nav">
-							{template 'wslm', 'title'}
-						</div>
-						{php if($catid==60):}<!-- 联系我们 -->
-						<div class="show-contact">
-							<img src="{SKIN_PATH}images/insert/contact_title.jpg" alt="联系我们">
-							<div class="contact-list">
-								{block('page_contact_us', 1)}
-							</div>
-						</div>
-						{php elseif($catid==61):}<!-- 在线留言 -->
-						<div class="show-contact">
-							<form name="myform" method="post" action="guestbook/post.php" onSubmit="return check()">
-								<table class="contact">
-									<tr>
-										<td width="40">姓名:</td>
-										<td width="160"><input class="input" type="text" size="38" name="guestbook[username]" /></td>
-										<td width="10"></td>
-									</tr>
-									<tr>
-										<td>电话:</td>
-										<td><input class="input" type="text" size="38" name="guestbook[homepage]" /></td>
-										<td><span style="color:#f00">*</span></td>
-									</tr>
-									<tr>
-										<td>QQ:</td>
-										<td><input class="input" type="text" size="38" name="guestbook[qq]"/></td>
-										<td><span style="color:#f00">*</span></td>
-									</tr>
-									<tr>
-										<td>邮箱:</td>
-										<td><input class="input" type="text" size="38" name="guestbook[email]" /></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>标题:</td>
-										<td><input class="input"  type="text"  size="38" name="guestbook[title]" /></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td colspan="2"><textarea class="textarea" name="guestbook[content]"  cols="65" rows="7"></textarea></td>
-										<td><span style="color:#f00">*</span></td>
-									</tr>
-									<tr>
-										<td>验证码:</td>
-										<td><input type="text" name="checkcodestr" class="captcha" size="4" />&nbsp;&nbsp;<img src="checkcode.php" id="checkcode" onClick="this.src='checkcode.php?id='+Math.random()*5;" style="cursor:pointer;" alt="验证码,看不清楚?请点击刷新验证码" align="absmiddle"/></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td colspan="2" align="right">
-											<input type="submit" name="dosubmit" class="button" value="提交信息" />
-										</td>
-										<td></td>
-									</tr>
-								</table>
-							</form>
-							<dl>
-							{get sql="select * from wslm_guestbook where passed = 1" rows="6" page="$pages"}
-								<dt><h4><span>{$r[username]}-{date('Y-m-d',$r[addtime])}</span>{$r[title]}</h4></dt>
-								<dd>回复:{$r[reply]}</dd>
-							{/get}
-							</dl>
-							{if $pages}
-								<div class="pages">
-									{$pages}
-								</div>
-							{/if}
-						</div>
-						
-						{php else:}
-						<div class="show-content">
-							{block("page_$catid", 1)}
-						</div>
-						{php endif;}
-					</div>
-				</div>
-			</div>
-			<!-- show end -->
-
-			<!-- footer start -->
+        <!-- footer start -->
 {template 'wslm', 'footer'}

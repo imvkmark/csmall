@@ -1,85 +1,62 @@
-{template 'wslm','header'}
-            <div class="index-banner">
-                <div class="mosaic banner-1">
-                	{php $cid=64}
-                	{tag_index_hover}
-                </div>
-                <div class="mosaic banner-2">
-                	{php $cid=65}
-                	{tag_index_nhover}
-                </div>
-                <div class="mosaic banner-3">
-					{php $cid=66}
-                    {tag_index_hover}
-                </div>
-                <div class="mosaic banner-4" id="index_small_cycle">
-                	{php $cid=67}
-                	{tag_index_change}
-                </div>
-                <div class="mosaic banner-5">
-					{php $cid=68}
-                    {tag_index_hover}
-                </div>
-                <div class="mosaic banner-6" id="index_big_cycle">
-                	{php $cid=69}
-                	{tag_index_change}
-                </div>
-                <div class="mosaic banner-7">
-                    {php $cid=70}
-                    {tag_index_nhover}
-                </div>
-                <div class="mosaic banner-8">
-                    {php $cid=71}
-                    {tag_index_hover}
-                </div>
-                <div class="mosaic banner-9">
-                    {php $cid=72}
-                    {tag_index_nhover}
-                </div>
-                <div class="mosaic banner-10">
-					{php $cid=73}
-                    {tag_index_hover}
-                </div>
-                <div class="mosaic banner-11">
-                	{php $cid=74}
-                    {tag_index_nhover}
-                </div>
-                <div class="mosaic banner-12">
-                    {php $cid=75}
-                    {tag_index_hover}
-                </div>
-            </div>
-            <div class="ym-grid">
-                <div class="ym-w320 ym-gl">
-                    <div class="ym-gbox index-news">
-                        <h2 class="roll"><a href="{$CATEGORY[17][url]}" title="{$CATEGORY[17][name]}" class="s-index-ntitle-notice"></a></h2>
-                        <ul>
-                            {php $cid=15}
-                            {tag_index_news_list}
-                        </ul>
-                    </div>
-                </div>
-                <div class="ym-w320 ym-gl ml-10">
-                    <div class="ym-gbox index-news">
-                        <h2 class="roll"><a href="{$CATEGORY[18][url]}" title="{$CATEGORY[18][name]}" class="s-index-ntitle-info"></a></h2>
-                        <ul>
-                            {php $cid=16}
-                            {tag_index_news_list}
-                        </ul>
-                    </div>
-                </div>
-                <div class="ym-w320 ym-gr">
-                    <div class="ym-gbox index-news">
-                        <h2 class="roll"><a href="{$CATEGORY[16][url]}" title="{$CATEGORY[16][name]}" class="s-index-ntitle-news"></a></h2>
-                        <ul>
-                            {php $cid=17}
-                            {tag_index_news_list}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+{template 'wslm', 'header'}
+    
+        <div class="idxmap">
+            <img src="{SKIN_PATH}images/i_idx_intro.jpg" alt="" usemap="#indexmap">
+            <map name="indexmap">
+                <area shape="rect" coords="278,37,371,137" href="{$CATEGORY[25][url]}" title="{$CATEGORY[25][catname]}" />
+                <!--机动车-->
+                <area shape="rect" coords="470,24,579,127" href="{$CATEGORY[26][url]}" title="{$CATEGORY[26][catname]}" />
+                <!--工矿机械-->
+                <area shape="rect" coords="656,29,737,138" href="{$CATEGORY[27][url]}" title="{$CATEGORY[27][catname]}" />
+                <!--风电产业-->
+                <area shape="rect" coords="788,52,903,170" href="{$CATEGORY[28][url]}" title="{$CATEGORY[28][catname]}" />
+                <!--航空产业-->
+                <area shape="rect" coords="91,78,173,177" href="{$CATEGORY[24][url]}" title="{$CATEGORY[24][catname]}" />
+                <!--家电产业-->
+            </map>
+        </div>
 
-            <div class="ym-grid index-plan mt-10 mb-20">
-                {tag_index_back_hover}
+        <!-- content start -->
+        <div class="indexcolumn">
+            <div class="intro">
+                <h2 class="hasmore png_bg"><a href="{$CATEGORY[12][url]}" class="more png_bg" title="more"></a>企业简介</h2>
+                <div class="introcontent">
+                    <img src="{SKIN_PATH}images/i_idx_desc.jpg" alt="">
+                    <p>{block('index_intro',1)}</p>
+                </div>
             </div>
-{template 'wslm','footer'}
+            <div class="news">
+                <div class="newswrapper">
+                    <h2 class="hasmore png_bg"><a href="{$CATEGORY[17][url]}" class="more png_bg" title="more"></a>最新资讯</h2>
+                    <ul id="idxNewslist" class="newslist">
+                        {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_thumbnews` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid(17)." AND a.thumb != '' ORDER BY a.listorder DESC";}
+                        {get sql="$sql" rows="4"}
+                        <li {if $n == 1}class="active" {else} class="noactive"{/if}>
+                            <img src="{$r[thumb]}" alt="{$r[title]}">
+                            <h3><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],25,'..')}</a></h3>
+                            <p>{str_cut(strip_tags($r[content]),100,'..')}</p>
+                            <span> &middot; {date('Y-m-d', $r[inputtime])} <a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],30,'..')}</a></span>
+                            <div class="clear"></div>
+                        </li>
+                        {/get}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="partner">
+                {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_partner` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid(7)." AND a.thumb != '' ORDER BY a.listorder DESC";}
+                {get sql="$sql" rows="7"}
+                    <img src="{$r[thumb]}" alt="{$r[title]}">
+                    {if $n == 4}
+                    <img src="{SKIN_PATH}images/partner/1 (6).jpg" alt="合作伙伴">
+                    {/if}
+                {/if}
+            </div>
+        </div>
+        <div class="insert">
+
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

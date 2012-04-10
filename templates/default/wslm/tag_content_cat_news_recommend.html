@@ -1,6 +1,0 @@
-<div class="recommend">
-	{loop $data $n $r}
-	<h2><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],33,'...')}</a></h2>
-	<p>Date:{date('Y-m-d', $r['inputtime'])}</p>
-	{/loop}
-</div>

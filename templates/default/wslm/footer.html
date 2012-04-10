@@ -1,41 +1,16 @@
-            <!-- footer start -->
+        <footer>
             <div class="footer">
-                <div class="menus">
-                    <dl><a href="{$CATEGORY[61][url]}"><img src="{SKIN_PATH}images/insert/foot_advice.jpg" /></a></dl>
-                    <ul>
-                        <a href="{SITE_URL}" title="首  页">首  页</a>
-                        <span>--</span>
-                        <a href="{$CATEGORY[9][url]}" title="关于我们">关于我们</a>
-                        <span>--</span>
-                        <a href="{$CATEGORY[13][url]}" title="企业团队">企业团队</a>
-                        <span>--</span>
-                        <a href="{SITE_URL}sitemap.xml" title="网站地图">网站地图</a>
-                        <span>--</span>
-                        <a href="{$CATEGORY[51][url]}" title="成功案例">成功案例</a>
-                        <span>--</span>
-                        <a href="{$CATEGORY[57][url]}" title="合作政策">合作政策</a>
-                        <span>--</span>
-                        <a href="{$CATEGORY[61][url]}" title="投诉建议">投诉建议</a>
-                    </ul>
-                </div>
-                <div class="about">
-                	{block('about', 1)}
-                </div>
-                <div class="link-logo">
-                	{tag_link_logo}
-                </div>
-                <div class="link-text">
-                	{tag_link_text}
-                </div>
                 <div class="copyright">
-                    <!--版权和 ICP NO-->
-                    {$WSLM[copyright]} {$WSLM[icpno]}
+                    {$WSLM[copyright]} {$WSLM[icpno]} 技术支持:<a href="http://www.zgweb.com" title="麦谷网络">麦谷网络</a>
                 </div>
-                <a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">麦谷网络</a>
-        	<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站建设</a>
-        	<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站制作</a>
+                <div class="footlink">
+                    <a href="{SITE_URL}" title="首页">首页</a> |
+                    <a href="{$CATEGORY[11][url]}" title="{$CATEGORY[11][catname]}">{$CATEGORY[11][catname]}</a> | 
+                    <a href="{$CATEGORY[3][url]}" title="{$CATEGORY[3][catname]}">{$CATEGORY[3][catname]}</a> | 
+                    <a href="{$CATEGORY[31][url]}" title="{$CATEGORY[31][catname]}">{$CATEGORY[31][catname]}</a> 
+                </div>
             </div>
-        </div>
+        </footer>
     </div>
 </body>
 </html>

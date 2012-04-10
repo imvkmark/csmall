@@ -1,9 +1,0 @@
-{template 'wslm','header'}
-{template 'wslm','footer'}
-{php if ( $catid == 8 ) :}
-	{block('about_us'_$catid, 2)}
-{php elseif ( $catid == 9 ) :}
-	{block("market_$catid",2)}
-{php elseif ( $catid == 12 ) :}
-	<?php cache_read('2.html', CACHE_FORM) ?>
-{php endif;}
