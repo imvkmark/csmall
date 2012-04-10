@@ -1,0 +1,29 @@
+                <div class="wside">
+                    <ul class="subnav">
+                        {if $is_result}
+                            <li class="active">
+                                <a href="javascirpt:void(0)" title="搜索结果">
+                                    搜索结果
+                                </a>
+                            </li>
+                        {else}
+                            {php $menu = subcat('wslm', $topid);}
+                            {if $menu}
+                                {loop $menu $r}
+                                <li id="sideMenu_{$r[catid]}">
+                                    <a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a>
+                                </li>
+                                {/loop}
+                            {else}
+                                <li class="active">
+                                    <a href="{$CATEGORY[$topid][url]}" title="{$CATEGORY[$topid][catname]}">
+                                        {$CATEGORY[$topid][catname]}
+                                    </a>
+                                </li>
+                            {/if}
+                        {/if}
+                    </ul>
+                </div>
+                <div class="contact">
+                    {block('sidebar_contact', 1)}
+                </div>

@@ -1,0 +1,54 @@
+{template 'wslm', 'header'}
+    
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-job">
+                    <table class="job-table">
+                        <colgroup>
+                            <col style="width:215px">
+                            <col style="width:120px">
+                            <col style="width:150px">
+                            <col style="width:45px">
+                            <col style="width:160px">
+                        </colgroup>
+                        <tr>
+                            <th>职位名称</th>
+                            <th>发布日期</th>
+                            <th>工作地点</th>
+                            <th>人数</th>
+                            <th>截止日期</th>
+                        </tr>
+                        {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_job` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+                        {php $odd=0}
+                        {get sql="$sql" rows="10" page="$pages"}
+                        <tr {if ++$odd%2 ==0} class="odd" {/if}>
+                            <td><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title], 50)}</a></td>
+                            <td>{$r[starttime]}</td>
+                            <td>{$r[place]}</td>
+                            <td>{$r[jobnum]}</td>
+                            <td>{$r[endtime]}</td>
+                        </tr>
+                        {/get}
+                    </table>
+                </div>
+                <div class="pages">
+                    {$pages}
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

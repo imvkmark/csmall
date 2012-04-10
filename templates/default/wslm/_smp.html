@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta content="{$head[keywords]}" name="keywords" />
+	<meta content="{$head[description]}" name="description" />
+	<meta name="Author" content="麦谷网络 www.zgweb.com" />
+	<meta name="copyright"content="麦谷网络0531-62320000 87155088" />
+	{if $catid}<!-- 栏目关键字关键词-->
+	{php $cus_file = "category_$catid.php"; }
+	{php $cus_meta = cache_read($cus_file); }
+	<meta content="{$cus_meta[meta_keywords]}" name="keywords" />
+	<meta content="{$cus_meta[meta_description]}" name="description" />
+	{/if}
+    <title>{$head[title]}</title>
+    <!-- topid 和 result判断 -->
+    {php $topid = get_topid($catid); }
+    {php if($topid == 0 && isset($result)): }
+        {php $is_result = true; }
+    {php elseif ($topid == 0): }
+        {php $is_index = true; }
+    {php endif; }
+    <!-- end topid and result 判断 -->
+    <link rel="stylesheet" type="text/css" href="{CSS_PATH}yui3reset.css" media="all">
+    <script type="text/javascript" src="{JS_PATH}jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{JS_PATH}add-ons/jquery.bgpos.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="{JS_PATH}html5.js"></script>
+    <![endif]-->
+    <!-- login area for js -->
+	<script type="text/javascript">
+		window.domain = location.host;
+        var Sys = {};
+        Sys.topid = {$topid};
+        {if $catid}
+        Sys.catid = {$catid};
+        {/if}
+	</script>
+	<!-- end for login area -->
+    <script type="text/javascript" src="{SITE_URL}{SKIN_PATH}js/affect.js"></script>
+    <base href="{SITE_URL}" target="_self" />
+</head>
+
+
+{php if($topid == ):}
+{php elseif($topid == ):}
+{php endif;}
+
+
+
+
+<a href="{$CATEGORY[55][url]}" title="{$CATEGORY[55][catname]}">{$CATEGORY[55][catname]}</a>
+{loop $data $n $r}
+{str_cut($r[title],49,'..')}
+{$r[description]}
+{str_cut(strip_tags($r[content]),49,'..')}
+{$r[url]}
+<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],49,'..')}</a>
+<a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+{/loop}
+
+<!-- show -->
+<h4>{$title}</h4>
+<p class="info"> 最近更新时间：{$updatetime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：<span id="hits">0</span></p>
+<div>{$content}</div>
+<script language="JavaScript" src="count.php?contentid={$contentid}"></script>
+
+
+
+
+<!-- #left -->
+
+{if $topid == $catid}
+	<li id="catleft_{$catid}">
+		<a href="{$CATEGORY[$topid][url]}" title="{$CATEGORY[$topid][catname]}">{$CATEGORY[$topid][catname]}</a>
+	</li>
+{else}
+	{php $data = subcat('wslm', $topid);}
+	{loop $data $cat}
+	<li id="catleft_{$cat['catid']}"><a href="{$cat['url']}" title="{$cat['catname']}">{$cat[catname]}</a></li>
+	{/loop}
+{/if}
+
+
+
+<!-- #menu -->
+{php $menu = subcat('wslm', 0);}
+{php $menu_count = 1}
+{loop $menu $n $r}
+{if $r[ismenu]}
+{php if (count($menu)-1 == $menu_count):} 
+<li id="menu_{$r[catid]}" class="bli">
+{php else:}
+<li id="menu_{$r[catid]}">
+{php endif;}
+{php $menu_count++}
+	<a href="{get_sublink($r[catid])}" title="{$r[catname]}">{$r[catname]}</a>
+	<p>{$r[image]}</p>
+	<dl>
+		{php $submenu = subcat('main', $r[catid])}
+		{loop $submenu $sn $sr}
+		<dd><a href="{get_sublink($sr[catid])}" title="{$sr[catname]}">{$sr[catname]}</a></dd>
+		{/loop}
+	</dl>
+</li>
+{/if}
+{/loop}
+
+<!-- footer -->
+<div class="footer">
+	<div class="bottom">
+		<!--版权和 ICP NO-->
+		{$WLSL[copyright]}{$WLSL[icpno]}
+	</div>
+</div>
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">麦谷网络</a> 
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站建设</a> 
+<a href="http://www.zgweb.com" style="font-size: 12px;font-weight: bold;display:none;">网站制作</a>
+</body>
+</html>
+
+
+get 标签可调用本系统和外部数据，适合熟悉SQL语句的人使用。注意：get标签属性值必须用双引号括起来
+1、调用本系统单条数据，示例（调用ID为1的信息，标题长度不超过25个汉字，显示更新日期）：
+{get sql="select * from wslm_content where contentid=1" /}
+标题：{str_cut($r[title], 50)} URL：{$r[url]} 更新日期：{date('Y-m-d', $r[updatetime])} 
+2、调用本系统多条数据，示例（调用栏目ID为1通过审核的10条信息，标题长度不超过25个汉字，显示更新日期）：
+{get sql="select * from wslm_content where catid=1 and status=99 order by updatetime desc" rows="10"}
+    标题：{str_cut($r[title], 50)} URL：{$r[url]} 更新日期：{date('Y-m-d', $r[updatetime])} 
+{/get}
+3、带分页，示例（调用栏目ID为1通过审核的10条信息，标题长度不超过25个汉字，显示更新日期，带分页）：
+{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_thumbnews` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+{get sql="$sql" rows="10" page="$page"}
+{str_cut($r[title], 50)}
+{$r[url]}
+{date('Y-m-d', $r[updatetime])}
+{str_cut(strip_tags($r[content]),49,'..')}
+<a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],49,'..')}</a>
+<a href="{$CATEGORY[55][url]}" title="{$CATEGORY[55][catname]}">{$CATEGORY[55][catname]}</a>
+{/get}
+分页：{$pages}
+4、自定义返回变量，示例（调用栏目ID为1通过审核的10条信息，标题长度不超过25个汉字，显示更新日期，返回变量为 $v）：
+{get sql="select * from wslm_content where catid=1 and status=99 order by updatetime desc" rows="10" return="v"}
+    标题：{str_cut($v[title], 50)} URL：{$v[url]} 更新日期：{date('Y-m-d', $v[updatetime])} 
+{/get}
+5、调用同一帐号下的其他数据库，示例（调用数据库为bbs，分类ID为1的10个最新主题，主题长度不超过25个汉字，显示更新日期）：
+{get dbname="bbs" sql="select * from cdb_threads where fid=1 order by dateline desc" rows="10"}
+    主题：{str_cut($r[subject], 50)} URL：http://bbs.wslm.cn/viewthread.php?tid={$r[tid]} 更新日期：{date('Y-m-d', $r[dateline])} 
+{/get}
+6、调用外部数据，示例（调用数据源为bbs，分类ID为1的10个最新主题，主题长度不超过25个汉字，显示更新日期）：
+{get dbsource="bbs" sql="select * from cdb_threads where fid=1 order by dateline desc" rows="10"}
+    主题：{str_cut($r[subject], 50)} URL：http://bbs.wslm.cn/viewthread.php?tid={$r[tid]} 更新日期：{date('Y-m-d', $r[dateline])} 
+{/get}

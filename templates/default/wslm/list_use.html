@@ -1,0 +1,48 @@
+{template 'wslm', 'header'}
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-use">
+                	{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_use` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+					{get sql="$sql" rows="6" page="$pages"}
+					<div class="use-item">
+						<div class="cbox">
+							<div class="use-ctr">
+                                <ul class="use-imgctr">
+									{php $thumbsql = "SELECT * FROM `mg_attachment`  WHERE contentid=$r[contentid] AND field='pics' ORDER BY listorder DESC";}
+									{get sql="$thumbsql" rows="6" return="t"}
+									<li><img src="uploadfile/{$t[filepath]}" alt="{$r[title]}"></li>
+									{/get}
+								</ul>
+                                <div class="num-count">
+                                </div>
+                            </div>
+							<h3><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],49,'..')}</a></h3>
+							<p>{str_cut(strip_tags($r[content]),200,'..')}</p>
+							<p><a href="{$r[url]}" title="{$r[title]}">详细&gt;&gt;</a></p>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					{/get}
+                </div>
+		        <div class="pages">
+					{$pages}
+				</div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

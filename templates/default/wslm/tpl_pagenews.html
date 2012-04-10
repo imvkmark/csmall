@@ -1,0 +1,37 @@
+                <div class="pagenews png_bg">
+                    <div class="pbox">
+                        <h2><a href="{$CATEGORY[16][url]}" title="更多&gt;&gt;">更多&gt;&gt;</a>金帝新闻</h2>
+
+                        <div class="news-table-wrapper">
+                            <table class="news-table">
+                                {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_thumbnews` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid(2)." ORDER BY a.listorder DESC";}
+                                {get sql="$sql" rows="3"}
+                                <tr>
+                                    <td class="time">{date('Y-m-d', $r[inputtime])}</td>
+                                    <td class="category">
+                                        <span>
+                                            <a href="{$CATEGORY[$r[catid]][url]}" title="{$CATEGORY[$r[catid]][catname]}">{$CATEGORY[$r[catid]][catname]}
+                                            </a>
+                                        </span>
+                                    </td>
+                                    <td class="newstitle png_bg">
+                                        <a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],60,'..')}</a>
+                                    </td>
+                                </tr>
+                                {/get}
+                            </table>
+                        </div>
+                        <div class="news-nav">
+                            <a href="{$CATEGORY[3][url]}" title="{$CATEGORY[3][catname]}">
+                                <img src="{SKIN_PATH}images/news_nav01.jpg" alt="{$CATEGORY[3][catname]}">
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="{$CATEGORY[5][url]}" title="{$CATEGORY[5][catname]}">
+                                <img src="{SKIN_PATH}images/news_nav02.jpg" alt="{$CATEGORY[5][catname]}"></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="{$CATEGORY[31][url]}" title="{$CATEGORY[31][catname]}">
+                                <img src="{SKIN_PATH}images/news_nav03.jpg" alt="{$CATEGORY[23][catname]}">
+                            </a>
+                        </div>
+                    </div>
+                </div>

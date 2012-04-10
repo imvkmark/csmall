@@ -1,0 +1,8 @@
+<div class="friendlink">
+    <select class="friendlink-select" onchange="locationTo(this)">
+        <option value="友情链接" selected="selected">友情链接</option>
+        {get sql="select * from mg_link where typeid=1 and passed=1 and linktype= 0 order by listorder desc" rows="10"}
+		    <option value="{$r[url]}">{$r[name]}</option>
+		{/get}
+    </select>
+</div>

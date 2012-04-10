@@ -1,0 +1,84 @@
+{template 'wslm', 'header'}
+    
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-message">
+                    <form>
+                    <table class="message-table">
+                        <colgroup>
+                            <col style="width:120px;text-align:right;">
+                            <col style="width:420px">
+                        </colgroup>
+                        <tr>
+                            <th>标题:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>内容:</th>
+                            <td><textarea></textarea></td>
+                        </tr>
+                        <tr>
+                            <th>公司名称:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>地址:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>邮编:</th>
+                            <td><input type="text"  class="short"/></td>
+                        </tr>
+                        <tr>
+                            <th>接收人:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>电话:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>移动电话:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>传真:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>电子邮件:</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>验证码:</th>
+                            <td><input type="text" class="short"/></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="submit" class="submit" value=" " />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="reset" class="reset" value=" " />
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

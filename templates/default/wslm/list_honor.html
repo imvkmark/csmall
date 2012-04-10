@@ -1,0 +1,40 @@
+{template 'wslm', 'header'}
+    
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-honor">
+                    {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_honor` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+                    {get sql="$sql" rows="10" page="$pages"}
+                	<div class="honor-item">
+						<div class="cbox">
+							<img src="{$r[thumb]}" alt="{$r[title]}">
+							<h3><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title], 50)}</a></h3>
+							<p>{str_cut(strip_tags($r[content]),229,'..')}</p>
+							<p> <a href="{$r[url]}">详细&gt;&gt;</a></p>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+                    {/get}
+                </div>
+                <div class="pages">
+                    {$pages}
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

@@ -1,0 +1,44 @@
+{template 'wslm', 'header'}
+    
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-contact">
+                    <div class="servicetel png_bg">
+                        <h4 class="png_bg">{block('contact_tel',1)}</h4>
+                    </div>
+                    <div class="contact-wrapper">
+                        {php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_contact` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+                        {get sql="$sql" rows="10" page="$pages"}
+                            <div class="contact-item">
+                                <div class="contact-title">
+                                    {$r[title]}
+                                </div>
+                                <div class="contact-content">
+                                    {php echo nl2br($r[contact])}
+                                <div class="clear"></div>
+                                </div>
+                            </div>
+                        {/get}
+                    </div>
+                </div>
+                <div class="pages">
+                    {$pages}
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}

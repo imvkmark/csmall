@@ -1,0 +1,15 @@
+                <div class="prosearch">
+                	<form action="{SITE_URL}search/" method="get">
+		                <input type="hidden" name="type" value="product">
+		                <input type="text" class="keywords" name="q" value=" " />
+		                <input type="hidden" name="normal" value="true" />
+		                <select name="proid" id="" class="select">
+			                <option value="3" selected="selected">所有产品</option>
+			                {php $cats = subcat('wslm', 3)}
+			                {loop $cats $r}
+			                <option value="{$r[catid]}">{$r[catname]}</option>
+			                {/loop}
+		                </select>
+		                <input type="submit" class="submit" value=" "/>
+		            </form>
+                </div>

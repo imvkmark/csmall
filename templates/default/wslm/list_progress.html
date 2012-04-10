@@ -1,0 +1,68 @@
+{template 'wslm', 'header'}
+    
+        <!-- header end -->
+
+        <!-- content start -->
+        <div class="content">
+            <nav class="side">
+                {template 'wslm', 'tpl_sidenav'}
+                {template 'wslm', 'tpl_friendlink'}
+            </nav>
+            <div class="article">
+                <div class="title">
+                    {template 'wslm', 'tpl_title'}
+                </div>
+                <div class="list-progress">
+                	<div class="progress-nav">
+                        <div class="navbg"></div>
+                        <ul id="progressYearSelect">
+                            {php $sql = "SELECT DISTINCT LEFT(b.date,4) AS cyear FROM `mg_content` a, `mg_c_progress` b WHERE a.contentid=b.contentid AND a.status=99 AND `catid`=6 ORDER BY a.listorder DESC";}
+                            {php $once = true}
+                            {php $year = ''}
+                            {get sql="$sql"}
+                                {if $once}
+                                <li class="active" assoc="year_{$r[cyear]}">{$r[cyear]}</li>
+                                {php $year=$r[cyear]}
+                                {php $once = false}
+                                {else}
+                                <li assoc="year_{$r[cyear]}">{$r[cyear]}</li>
+                                {/if}
+                            {/get}
+                        </ul>
+						<div id="progressPrev" class="prev"></div>
+                        <div id="progressNext" class="next"></div>
+					</div>
+                    <div class="yearctr">
+                        <h3 id="progressYear" class="year">{$year}</h3>
+                    </div>
+                    <div id="yearThings" class="year-things">
+                        {php $once = true}
+                        {php $sql = "SELECT DISTINCT LEFT(b.date,4) AS cyear FROM `mg_content` a, `mg_c_progress` b WHERE a.contentid=b.contentid AND a.status=99 AND `catid`=6 ORDER BY a.listorder DESC";}
+                        {get sql="$sql"}
+                        {if $once}
+                        <div id="year_{$r[cyear]}" class="year-thing-item">
+                        {php $once = false}
+                        {else}
+                        <div id="year_{$r[cyear]}" class="year-thing-item" style="display:none;">
+                        {/if}
+                            <table>
+                            {php $cdatesql = "SELECT a.*,LEFT(b.date,4) AS cyear,LEFT(b.date,7) AS cdate,b.* FROM `mg_content` a, `mg_c_progress` b WHERE a.contentid=b.contentid AND a.status=99 AND `catid`=6 AND LEFT(b.date,4)=$r[cyear] ORDER BY a.listorder DESC ";}
+                            {get sql="$cdatesql" return="d"}
+                                <tr>
+                                    <td class="item-month">{$d[cdate]}</td>
+                                    <td class="item-content">{$d[progress]}</td>
+                                </tr>
+                            {/get}
+                            </table>
+                        </div>
+                        {/get}
+                    </div>
+                </div>
+                {template 'wslm', 'tpl_pagenews'}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer start -->
+{template 'wslm', 'footer'}
