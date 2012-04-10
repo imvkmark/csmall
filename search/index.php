@@ -1,8 +1,14 @@
 <?php 
 require './include/common.inc.php';
-
-$types = $search->get_type();
-if(isset($q)) $q = $search->strip($q);
+if (isset($_REQUEST['normal'])) {
+	$normal = true;
+	$type = $_REQUEST['type'];
+	$proid = (int) $_REQUEST['proid'];
+	if(isset($q)) $q = $search->strip($q);
+	include template($mod, 'list');
+} else {
+	$types = $search->get_type();
+	if(isset($q)) $q = $search->strip($q);
 
 if($q)
 {
@@ -30,4 +36,5 @@ else
 	$head['description'] = $WSLM['description'];
 }
 include template($mod, $template);
+}
 ?>
