@@ -3,15 +3,15 @@
 define('DB_HOST', 'localhost'); //数据库服务器主机地址
 define('DB_USER', 'root'); //数据库帐号
 define('DB_PW', ''); //数据库密码
-define('DB_NAME', 'mg_wlsm'); //数据库名
-define('DB_PRE', 'wslm_'); //数据库表前缀，同一数据库安装多套Wslm时，请修改表前缀
+define('DB_NAME', ''); //数据库名
+define('DB_PRE', 'mg_'); //数据库表前缀，同一数据库安装多套Wslm时，请修改表前缀
 define('DB_CHARSET', 'utf8'); //数据库字符集
 define('DB_PCONNECT', 0); //0 或1，是否使用持久连接
 define('DB_DATABASE', 'mysql'); //数据库类型
 
 // 网站路径配置
 define('WSLM_BUG', 1);
-define( 'WSLM_PATH'        , '/wslm/' ); // Main框架访问路径，相对于域名
+define( 'WSLM_PATH'        , '/xxweb/' ); // Main框架访问路径，相对于域名
 define( 'JS_PATH'          , WSLM_PATH . 'statics/js/' );
 define( 'CSS_PATH'         , WSLM_PATH . 'statics/css/' );
 

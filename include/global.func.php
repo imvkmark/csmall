@@ -1,37 +1,23 @@
 <?php
 /* *edit by raffia*/
 // 获取分类标题
-function cat_cus_pos($catid, $cut = '', $class = '', $showIndex = false)
+function get_pos($catid, $cut = '', $class = '', $showIndex = false)
 {
 	global $CATEGORY;
 	if(!isset($CATEGORY[$catid])) return '';
-	if ($showIndex)
-	{
-		$pos = "<a href=\"".SITE_URL."\" title=\"{$showIndex}\"> {$showIndex} </a>";
-	} else {
-		$pos = '';
-	}
-	$firstCycle = true;
+	$pos = '';
 	$arrparentid = array_filter(explode(',', $CATEGORY[$catid]['arrparentid'].','.$catid));
+	$cycle = 0;
 	foreach($arrparentid as $catid)
 	{
-		$url = get_subLink($catid);
-		if ($firstCycle && !$showIndex)
-		{
-			$pos .= '';
-			$firstCycle = !$firstCycle;
+		if($urlrule) eval("\$url = \"$urlrule\";");
+		else $url = get_sublink($catid);
+		if (count($arrparentid) == ++$cycle) {
+			$iscurrent = 'class="current"';
+		} else {
+			$iscurrent = '';
 		}
-		else
-		{
-			$pos .= $cut;
-		}
-
-		$pos .= '<a href="'.$url.'"';
-		if ($class)
-		{
-			$pos .= ' class="'.$class.'" ';
-		}
-		$pos .= ' title="'.$CATEGORY[$catid]['catname'].'">'.$CATEGORY[$catid]['catname'].'</a>';
+		$pos .= ' &gt; <a ' .$iscurrent. ' href="'.$url.'">'.$CATEGORY[$catid]['catname'].'</a>';
 	}
 	return $pos;
 }
@@ -841,16 +827,6 @@ function template($module = 'wslm', $template = 'index', $istag = 0)
 		require_once WSLM_ROOT.'include/template.func.php';
 		template_compile($module, $template, $istag);
 	}
-	// TODO
-	if(preg_match('/index/', $template)) {
-		define('TPL_INDEX', true);
-	} elseif (preg_match('/category/', $template)) {
-		define('TPL_CATEGORY', true);
-	} elseif (preg_match('/list/', $template)) {
-		define('TPL_LIST', true);
-	} elseif (preg_match('/show/', $template)) {
-		define('TPL_SHOW', true);
-	}
 	return $compiledtplfile;
 }
 
@@ -1060,14 +1036,15 @@ function pages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array(),
 			}
 			if($urlrule == '') $urlrule = url_par('page={$page}');
 
-			$multipage .= '总数：<b>'.$num.'</b>&nbsp;&nbsp;';
+			//$multipage .= '总数：<b>'.$num.'</b>&nbsp;&nbsp;';
 
 			if($curr_page>0)
 			{
-				$multipage .= $catid ? '<a href="'.$url->category($catid, $curr_page-1, 1, 1).'">上一页</a>' : '<a href="'.pageurl($urlrule, $curr_page-1, $array).'">上一页</a>';
+				//$multipage .= '<a class="first" href="'.$url->category($catid, $from, 1, 1).'"></a> ';
+				$multipage .= $catid ? '<a class="prev" href="'.$url->category($catid, $curr_page-1, 1, 1).'"></a>' : '<a class="prev" href="'.pageurl($urlrule, $curr_page-1, $array).'"></a>';
 				if($curr_page==1)
 				{
-					$multipage .= '<u><b>1</b></u> ';
+					$multipage .= '<a href="javascript:void(0)" class="current">1</a>';
 				}
 				elseif($curr_page>6 && $more)
 				{
@@ -1075,40 +1052,41 @@ function pages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array(),
 				}
 				else
 				{
-					$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'">1</a>' : '<a href="'.pageurl($urlrule, 1, $array).'">1</a> ';
+					$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'">1</a>' : '<a href="'.pageurl($urlrule, 1, $array).'">1</a>';
 				}
 			}
+			//$multipage .= 'test';
 			for($i = $from; $i <= $to; $i++)
 			{
 				if($i != $curr_page)
 				{
-					$multipage .= $catid ? '<a href="'.$url->category($catid, $i, 1, 1).'">'.$i.'</a> ' : '<a href="'.pageurl($urlrule, $i, $array).'">'.$i.'</a> ';
+					$multipage .= $catid ? '<a href="'.$url->category($catid, $i, 1, 1).'">'.$i.'</a> ' : '<a href="'.pageurl($urlrule, $i, $array).'">'.$i.'</a>';
 				}
 				else
 				{
-					$multipage .= ' <u><b>'.$i.'</b></u> ';
+					$multipage .= '<a href="javascript:void(0)" class="current">'.$i.'</a>';
 				}
 			}
+
 			if($curr_page<$pages)
 			{
 				if($curr_page<$pages-5 && $more)
 				{
-					$multipage .= $catid ? '..<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1).'">下一页</a>' : '..<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'">下一页</a>';
+					$multipage .= $catid ? '..<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a class="next" href="'.$url->category($catid, $curr_page+1, 1).'"></a>' : '..<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a class="next" href="'.pageurl($urlrule, $curr_page+1, $array).'"></a>';
 				}
 				else
 				{
-					$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'">下一页</a>' : '<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'">下一页</a>';
+					$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a class="next" href="'.$url->category($catid, $curr_page+1, 1, 1).'"></a>' : '<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a class="next" href="'.pageurl($urlrule, $curr_page+1, $array).'"></a>';
 				}
 			}
 			elseif($curr_page==$pages)
 			{
-				$multipage .= ' <u><b>'.$pages.'</b></u><a href="'.pageurl($urlrule, $curr_page, $array).'">下一页</a>';
+				$multipage .= '<a href="javascript:void(0)" class="current">'.$pages.'</a><a class="next" href="'.pageurl($urlrule, $curr_page, $array).'"></a>';
 			}
 		}
 		return $multipage;
 	}
-	else
-	{
+	if(!$WSLM['pagemode']){
 		$total = $num;
 		$page = $curr_page;
 		if($num < 1) return '';
