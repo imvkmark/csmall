@@ -1,1 +1,0 @@
-<?php defined('IN_WSLM') or exit('Access Denied'); ?>当前位置：<?php echo cat_cus_pos($catid, '',' > ', '首页');?>
