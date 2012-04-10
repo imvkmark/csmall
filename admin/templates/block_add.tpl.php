@@ -10,7 +10,7 @@ include admin_tpl('header');
 <table cellpadding="0" cellspacing="1" class="table_form">
     <caption>添加碎片</caption>
       <th width="30%"><font color="red">*</font> <strong>碎片名称</strong></th>
-      <td><input type="text" name="info[name]" size="50" require="true" datatype="limit" min="2" max="20" msg="碎片名称不得少于2个字符超过20个字符！"></td>
+      <td><input type="text" name="info[name]" size="50" require="true" datatype="limit" min="2" max="50" msg="碎片名称不得少于2个字符超过50个字符！"></td>
     </tr>
 	<tr> 
       <th><font color="red">*</font> <strong>网页标识</strong><br />调用碎片页面的网页标识（pageid）</th>

@@ -10,7 +10,7 @@ include admin_tpl('header');
 <table cellpadding="0" cellspacing="1" class="table_form">
     <caption>添加碎片</caption>
       <th width="20%"><font color="red">*</font> <strong>碎片名称</strong></th>
-      <td><input type="text" name="info[name]" size="40" require="true" datatype="limit" min="2" max="20" msg="不得少于2个或超过20个字符！"></td>
+      <td><input type="text" name="info[name]" size="40" require="true" datatype="limit" min="2" max="50" msg="不得少于2个或超过50个字符！"></td>
     </tr>
 	<tr> 
       <th><font color="red">*</font> <strong>排序权值</strong><br /> 越小排序越靠前</th>
