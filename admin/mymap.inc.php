@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT `modelid`, `name` FROM ".DB_PRE."model ";  category parentid = 0
+$sql = "SELECT `modelid`, `name` FROM ".DB_PRE."model ";
 $result = $db->query($sql);
 while($r = $db->fetch_array($result))
 {

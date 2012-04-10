@@ -80,7 +80,7 @@ body {
 	<input type="hidden" name="ismsgopen" id="ismsgopen" value="0" /> 
     <div id="new_msg"><img src="admin/skin/images/s.gif" alt="查看新消息" style="width:49px;height:20px;margin-right:-2px;" onclick="go_right('message/inbox.php?userid=<?php echo($_userid)?>');" /><img src="admin/skin/images/close_1.gif" alt="关闭" onclick="$('#new_msg').hide();$('#ismsgopen').val('1');" style="margin:5px 15px;" /></div>
     <div class="div" id="add_menu">
-      <form action="" method="POST" onsubmit="return add_mymenu()">
+      <form action="" method="post" onsubmit="return add_mymenu()">
         <div class="menu_line">菜单名称：
           <input type="text" name="menu_name" id="my_menu_name" size="40">
         </div>

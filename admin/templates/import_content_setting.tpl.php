@@ -118,7 +118,7 @@ include admin_tpl('header');
     </tr>
     <tr>
     	<th><strong>php脚本执行超时时限</strong><br />当数据较多时程序执行时间会较长</th>
-        <td><input type="text" name="setting[expire]" value="<?=$setting['expire']?$setting['expire']:90?>"</td>
+        <td><input type="text" name="setting[expire]" value="<?=$setting['expire']?$setting['expire']:90?>"/></td>
     </tr>
     <tr>
     	<th></th>

@@ -6,7 +6,7 @@
 <div id="main">
 {template "yp","center_left"}
 <div id="right">
-{if $company_user_infos[endtime] && $company_user_infos[endtime]<TIME-108000}
+{if $company_user_infos[endtime] && $company_user_infos[endtime] < TIME-108000}
 <div class="box_2" style="margin-top:0px;">您的服务期将于{date('Y年m月d日',$company_user_infos[endtime])}到期，请及时续交服务费</div>
 {/if}
 <table border=0 cellspacing=1 class="table_form">

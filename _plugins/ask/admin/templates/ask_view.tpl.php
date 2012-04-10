@@ -6,7 +6,7 @@ include admin_tpl('header');
 <table width="100%" cellpadding="3" cellspacing="1" align="center" class="table_form">
 	 <caption>
   提问详细信息
-  </caption
+  </caption>
 	<tr>
 		<td width="80" >问题：</td>	
 		<td align="left" ><?=$info['title']?></td>	
