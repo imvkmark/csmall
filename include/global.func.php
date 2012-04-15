@@ -31,7 +31,7 @@ function get_topid($cid = 0)
 	return $CATEGORY[$cid]['parentid'] ? get_topid($CATEGORY[$cid]['parentid']) : $cid;
 }
 
-function get_subLink($catid)
+function get_sublink($catid)
 {
 	global $CATEGORY;
 	$child = $CATEGORY[$catid]['child'];
@@ -40,7 +40,7 @@ function get_subLink($catid)
 		$children = $CATEGORY[$catid]['arrchildid'];
 		$arrChildren = explode(',', $children);
 		$subcatid = $arrChildren[1];
-		$url = getsubLink($subcatid);
+		$url = get_sublink($subcatid);
 	}
 	else
 	{

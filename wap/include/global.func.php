@@ -1,5 +1,5 @@
 <?php
-function wmlHeader($title) 
+function wmlHeader($title)
 {
 	header("Content-type: text/vnd.wap.wml; charset=utf-8");
 	echo "<?xml version=\"1.0\"?>\n".
@@ -12,17 +12,17 @@ function wmlHeader($title)
 	"<p>\n";
 }
 
-function menus() 
+function menus()
 {
 	global $lang, $cats;
 	$html = $lang['channel_news'].'<br/>';
-	foreach($cats['news'] as $key=>$val) 
+	foreach($cats['news'] as $key=>$val)
 	{
 		$html .= '<a href="?action=list&amp;catid='.$val['catid'].'">'.$val['catname'].'</a> ';
 	}
 	$html .= '<br/>'.$lang['channel_info'].'<br/>';
 
-	foreach($cats['info'] as $key=>$val) 
+	foreach($cats['info'] as $key=>$val)
 	{
 		$html .= '<a href="?action=list&amp;catid='.$val['catid'].'">'.$val['catname'].'</a> ';
 	}
@@ -30,7 +30,7 @@ function menus()
 	return $html;
 }
 
-function wmlFooter() 
+function wmlFooter()
 {
 	echo "<small>Powered by Wslm2008</small>\n".
 	"</p>\n".
@@ -50,57 +50,57 @@ function submodelcats($modelid = 1, $parentid = NULL, $type = NULL)
 	return $subcat;
 }
 
-function  wml_pages($num, $curr_page, $mpurl, $perpage = 20) 
-{ 
+function  wml_pages($num, $curr_page, $mpurl, $perpage = 20)
+{
 	global $lang;
-	if($num > $perpage) 
-	{ 
-		$page = 10; 
-		$offset = 2; 
-		$pages = ceil($num / $perpage); 
-		$from = $curr_page - $offset; 
-		$to = $curr_page + $page - $offset - 1; 
-		if($page > $pages) 
-		{ 
-			$from = 1; 
-			$to = $pages; 
-		} 
-		else 
-		{ 
-			if($from < 1) 
-			{ 
-				$to = $curr_page + 1 - $from; 
-				$from = 1; 
-				if(($to - $from) < $page && ($to - $from) < $pages) 
-				{ 
-					$to = $page; 
-				} 
-			} 
-			elseif($to > $pages) 
-			{ 
-				$from = $curr_page - $pages + $to; 
-				$to = $pages; 
-				if(($to - $from) < $page && ($to - $from) < $pages) 
-				{ 
-					$from = $pages - $page + 1; 
-				} 
-			} 
-		} 
-		$multipage .= '<a href="'.$mpurl.'1">&lt;&lt;</a>  '; 
-		for($i = $from; $i <= $to; $i++) 
-		{ 
-			if($i != $curr_page) 
-			{ 
-				$multipage .= '<a href="'.$mpurl.$i.'">['.$i.']</a> '; 
-			} 
-			else 
-			{ 
-				$multipage .= '<u><b>['.$i.']</b></u> '; 
-			} 
-		} 
-		$multipage .= $pages > $page ? "...<a href=\"$mpurl$pages\"> [$pages] &gt;&gt;</a>" : "<a href=\"$mpurl$pages\">&gt;&gt;</a>"; 
+	if($num > $perpage)
+	{
+		$page = 10;
+		$offset = 2;
+		$pages = ceil($num / $perpage);
+		$from = $curr_page - $offset;
+		$to = $curr_page + $page - $offset - 1;
+		if($page > $pages)
+		{
+			$from = 1;
+			$to = $pages;
+		}
+		else
+		{
+			if($from < 1)
+			{
+				$to = $curr_page + 1 - $from;
+				$from = 1;
+				if(($to - $from) < $page && ($to - $from) < $pages)
+				{
+					$to = $page;
+				}
+			}
+			elseif($to > $pages)
+			{
+				$from = $curr_page - $pages + $to;
+				$to = $pages;
+				if(($to - $from) < $page && ($to - $from) < $pages)
+				{
+					$from = $pages - $page + 1;
+				}
+			}
+		}
+		$multipage .= '<a href="'.$mpurl.'1">&lt;&lt;</a>  ';
+		for($i = $from; $i <= $to; $i++)
+		{
+			if($i != $curr_page)
+			{
+				$multipage .= '<a href="'.$mpurl.$i.'">['.$i.']</a> ';
+			}
+			else
+			{
+				$multipage .= '<u><b>['.$i.']</b></u> ';
+			}
+		}
+		$multipage .= $pages > $page ? "...<a href=\"$mpurl$pages\"> [$pages] &gt;&gt;</a>" : "<a href=\"$mpurl$pages\">&gt;&gt;</a>";
 	}
-	return $multipage; 
+	return $multipage;
 }
 
 function wml_strip($string)
