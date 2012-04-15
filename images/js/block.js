@@ -20,7 +20,7 @@ $(document).ready(function(){
 	  block_iframe.location = admin_url+'?mod=wslm&file=block&action=add&ajax=1&pageid='+$(this).attr('pageid')+'&blockno='+$(this).attr('blockno');
 	  $('#blockname').html('添加碎片');
   });
-  $(".jqmWindow").jqm({overlay: 0	}).jqDrag(".title");
+  $(".jqmWindow").jqm({overlay: 0}).jqDrag(".title");
   $(".jqmWindow").hide();
   $(".jqmClose").click(function(){
 	    close_window();
