@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `mg_attachment` (
   `uploadip` char(15) NOT NULL,
   PRIMARY KEY (`aid`),
   KEY `contentid` (`contentid`,`field`,`listorder`)
-) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dumping data for table 004_jdweb.mg_attachment: 98 rows
 DELETE FROM `mg_attachment`;
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `mg_block` (
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`blockid`),
   KEY `pageid` (`pageid`,`blockno`,`disabled`,`listorder`)
-) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dumping data for table 004_jdweb.mg_block: 44 rows
 DELETE FROM `mg_block`;
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `mg_content` (
   KEY `catid` (`catid`,`status`,`contentid`),
   KEY `updatetime` (`catid`,`status`,`updatetime`),
   KEY `typeid` (`typeid`,`status`,`contentid`)
-) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dumping data for table 004_jdweb.mg_content: 71 rows
 DELETE FROM `mg_content`;
@@ -386,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `mg_editor_data` (
   `data` mediumtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userid` (`userid`,`editorid`,`created_time`,`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dumping data for table 004_jdweb.mg_editor_data: 1 rows
 DELETE FROM `mg_editor_data`;
@@ -619,7 +619,7 @@ CREATE TABLE IF NOT EXISTS `mg_log` (
   KEY `userid` (`userid`),
   KEY `module` (`module`,`file`,`action`),
   KEY `field` (`field`,`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=231 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 # Dumping data for table 004_jdweb.mg_log: 0 rows
 DELETE FROM `mg_log`;
