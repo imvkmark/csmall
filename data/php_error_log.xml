@@ -1,0 +1,305 @@
+<errorentry>
+	<datetime>2012-04-15 16:43:11</datetime>
+	<errornum>2</errornum>
+	<errortype>Warning</errortype>
+	<errormsg>include(D:/wamp/www/csmall/data/cache/common.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/global.func.php</scriptname>
+	<scriptlinenum>687</scriptlinenum>
+</errorentry>
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: forward</errormsg>
+	<scriptname>D:/wamp/www/csmall/admin/menu.inc.php</scriptname>
+	<scriptlinenum>9</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: flag</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/admin/global.func.php</scriptname>
+	<scriptlinenum>76</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined offset: 3</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/admin/global.func.php</scriptname>
+	<scriptlinenum>80</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: value</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/xml.func.php</scriptname>
+	<scriptlinenum>37</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:23</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: pagetitle</errormsg>
+	<scriptname>D:/wamp/www/csmall/admin/templates/header.tpl.php</scriptname>
+	<scriptlinenum>7</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:25</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:35</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:45</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:00:55</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:05</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:15</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:25</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:35</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:45</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:01:55</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:05</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:15</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:25</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: forward</errormsg>
+	<scriptname>D:/wamp/www/csmall/admin/menu.inc.php</scriptname>
+	<scriptlinenum>9</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: flag</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/admin/global.func.php</scriptname>
+	<scriptlinenum>76</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined offset: 3</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/admin/global.func.php</scriptname>
+	<scriptlinenum>80</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: value</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/xml.func.php</scriptname>
+	<scriptlinenum>37</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:29</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined variable: pagetitle</errormsg>
+	<scriptname>D:/wamp/www/csmall/admin/templates/header.tpl.php</scriptname>
+	<scriptlinenum>7</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:35</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:45</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:02:55</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:03:05</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:03:15</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
+<errorentry>
+	<datetime>2012-04-15 17:03:25</datetime>
+	<errornum>8</errornum>
+	<errortype>Notice</errortype>
+	<errormsg>Undefined index: publish</errormsg>
+	<scriptname>D:/wamp/www/csmall/include/common.inc.php</scriptname>
+	<scriptlinenum>155</scriptlinenum>
+</errorentry>
+
