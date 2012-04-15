@@ -19,11 +19,11 @@ include admin_tpl('header');
 	<tr> 
       <th><font color="red">*</font> <strong>碎片格式</strong></th>
       <td>
-	  <input type="radio" name="info[isarray]" id="isarray" value="1" checked onclick="$('#data_rows').show();"> 格式化碎片（输入标题、链接、缩略图、日期、简介）<br/>
-	  <input type="radio" name="info[isarray]" id="isarray" value="0" onclick="$('#data_rows').hide();"> 代码碎片（输入html代码）
+	  <input type="radio" name="info[isarray]" id="isarray" value="1" onclick="$('#data_rows').show();"> 格式化碎片（输入标题、链接、缩略图、日期、简介）<br/>
+	  <input type="radio" name="info[isarray]" id="isarray" value="0" checked onclick="$('#data_rows').hide();"> 代码碎片（输入html代码）
 	  </td>
     </tr>
-	<tbody id="data_rows" style="display:">
+	<tbody id="data_rows" style="display:none">
 	<tr> 
       <th><font color="red">*</font> <strong>数据行数</strong></th>
       <td><input type="text" name="info[rows]" id="rows" size="5" value="6" require="true" datatype="integer" msg="请输入整数！"> 行</td>
