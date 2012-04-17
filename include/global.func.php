@@ -48,6 +48,91 @@ function get_sublink($catid)
 	}
 	return $url;
 }
+function cpages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array(), $catid = 0)
+{
+	global $WLSL;
+
+	$url = load('url.class.php');
+	$multipage = '';
+
+	if($num > $perpage)
+	{
+		$page = 15;
+		$offset = 6;
+		$pages = ceil($num / $perpage);
+		$from = $curr_page - $offset;
+		$to = $curr_page + $offset;
+		$more = 0;
+		if($page >= $pages)
+		{
+			$from = 2;
+			$to = $pages-1;
+		}
+		else
+		{
+			if($from <= 1)
+			{
+				$to = $page-1;
+				$from = 2;
+			}
+			elseif($to >= $pages)
+			{
+				$from = $pages-($page-2);
+				$to = $pages-1;
+			}
+			$more = 1;
+		}
+		if($urlrule == '') $urlrule = url_par('page={$page}');
+
+		//$multipage .= '总数：<b>'.$num.'</b>&nbsp;&nbsp;';
+		//$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'">&lt;&lt;</a> ' : '<a href="'.pageurl($urlrule, 1, $array).'">&lt;&lt;</a> ';
+
+		if($curr_page>0)
+		{
+			$multipage .= $catid ? '<a href="'.$url->category($catid, $curr_page-1, 1, 1).'"><img src="images/p1.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $curr_page-1, $array).'"><img src="images/p1.jpg" align="absmiddle" /></a> ';
+			if($curr_page==1)
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'" class="a_h">1</a> ' : '<a href="'.pageurl($urlrule, 1, $array).'" class="a_h">1</a> ';
+			}
+			elseif($curr_page>8 && $more)
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'">1</a> .. ' : '<a href="'.pageurl($urlrule, 1, $array).'">1</a> .. ';
+			}
+			else
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'">1</a> ' : '<a href="'.pageurl($urlrule, 1, $array).'">1</a> ';
+			}
+		}
+		for($i = $from; $i <= $to; $i++)
+		{
+			if($curr_page == $i)
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, $i, 1, 1).'" class="a_h">'.$i.'</a> ' : '<a href="'.pageurl($urlrule, $i, $array).'" class="a_h">'.$i.'</a> ';
+			}
+			else
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, $i, 1, 1).'">'.$i.'</a> ' : '<a href="'.pageurl($urlrule, $i, $array).'">'.$i.'</a> ';
+			}
+		}
+		if($curr_page<$pages)
+		{
+			if($curr_page<$pages-7 && $more)
+			{
+				$multipage .= $catid ? '.. <a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : ' .. <a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+			}
+			else
+			{
+				$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+			}
+		}
+		elseif($curr_page==$pages)
+		{
+			$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'" class="a_h">'.$pages.'</a> <a href="'.$url->category($catid, $pages, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'" class="a_h">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+		}
+		//$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">&gt;&gt;</a>' : '<a href="'.pageurl($urlrule, $pages, $array).'">&gt;&gt;</a>';
+	}
+	return $multipage;
+}
 
 /* #edit by raffia*/
 function new_htmlspecialchars($string)
@@ -912,7 +997,7 @@ function get($sql, $rows = 0, $page = 0, $dbname = '', $dbsource = '', $urlrule 
 		{
 			$total = cache_count("SELECT COUNT(*) AS `count` ".stristr($sql, 'from'));
 		}
-		$pages = pages($total, $page, $rows, $urlrule, '', $catid);
+		$pages = cpages($total, $page, $rows, $urlrule, '', $catid);
 	}
 	elseif($rows > 0)
 	{
@@ -949,7 +1034,7 @@ function tag($module, $template, $sql, $page = 0, $number = 10, $setting = array
 			$count = cache_count($sql_count);
 			$urlruleid = isset($setting['urlruleid']) ? intval($setting['urlruleid']) : 0;
 			$urlrule = $urlruleid > 0 ? $URLRULE[$urlruleid] : '';
-			$pages = pages($count, $page, $number, $urlrule, $setting, $catid);
+			$pages = cpages($count, $page, $number, $urlrule, $setting, $catid);
 		}
 		$i = 0;
 		$data = array();
