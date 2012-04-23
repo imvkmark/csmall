@@ -39,7 +39,7 @@ for($i = 0; $i < $rows; $i++){
 <?php 
 }else{	
 ?>
-<textarea name="data" id="data" style="display:none"><?=$data?></textarea><?=form::editor('data', 'introduce', '100%', '300', 0)?>
+<textarea name="data" id="data" style="display:none"><?=$data?></textarea><?=form::editor('data', 'standard', '100%', '300', 0)?>
 <?php 
 }	
 ?>

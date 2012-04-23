@@ -1,40 +1,44 @@
 {template 'wslm', 'header'}
-    
-        <!-- header end -->
-
         <!-- content start -->
-        <div class="content">
-            <nav class="side">
-                {template 'wslm', 'tpl_sidenav'}
-                {template 'wslm', 'tpl_friendlink'}
-            </nav>
-            <div class="article">
-                <div class="title">
-                    {template 'wslm', 'tpl_title'}
+        <div class="main-w">
+            <div class="main">
+                <div class="p-left-w">
+                    <div class="p-left">
+                        <!-- 导航 -->
+                        {template 'wslm', 'tpl_sidenav'}
+
+                        <!-- common -->
+                        {template 'wslm', 'tpl_sidecommon'}
+
+                        <!-- hotlink -->
+                        {template 'wslm', 'tpl_sidehotlink'}
+
+                    </div>
                 </div>
-                <div class="search-result">
-                    <ul class="search-list">
-                    {if !$normal}
-                	{loop $data $i $r}
-						<li><span>{$r[date]}</span><a href="{$r[url]}">{$r[title]}</a></li>
-					{/loop}
-                    {else}
-                        {php $sql = "SELECT a.*, b.* FROM `mg_content` a, `mg_c_product` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($proid)." AND (a.title LIKE '%$q%' OR b.content LIKE '%$q%') ORDER BY a.listorder DESC";}
-                        {get sql="$sql" rows="10" page="$pages"}
-                        <li><span>{date('Y-m-d', $r[updatetime])}</span><a href="{$r[url]}">{$r[title]}</a></li>
-                        {/get}
-                    {/if}
-                    </ul>
-					<p class="info">
-                		{if $data}找到相关网页<span style="color:red">{$total}</span>篇，用时<span style="color:red">{$usedtime}</span>秒{/if}
-                	</p>
+                <div class="p-right-w">
+                    <div class="p-right">
+                        <div class="catbanner">
+                            {block("top_$topid", 1)}
+                        </div>
+                        <div class="content-w">
+                            <div class="content">
+                                {template 'wslm', 'tpl_title'}
+                                <div class="article-w">
+                                    <div class="article news-list">
+                                        <ul id="" class="">
+                                        {loop $data $i $r}
+                                            <li><span class="fr">{$r[date]}</span><a href="{$r[url]}">{$r[title]}</a></li>
+                                        {/loop}
+                                        </ul>
+                                        <div class="pages">{$pages}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="pages">
-                    {$pages}
-                </div>
-                {template 'wslm', 'tpl_pagenews'}
+                <div class="fc"></div>
             </div>
-            <div class="clear"></div>
         </div>
         <!-- content end -->
 

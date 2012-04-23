@@ -70,16 +70,16 @@ include admin_tpl('header');
 		<?php } else echo "当前栏目绑定的模型为不生成静态，需要绑定二级域名，<a href='?mod=wslm&file=model&action=edit&modelid=".$modelid."'>请点击这里设置</a>";?>
       </td>
     </tr>
-    <tr>
+    <tr style="display:none;">
       <th width='30%'><strong>META Title（栏目标题）</strong><br/>针对搜索引擎设置的标题</th>
       <td><input name='setting[meta_title]' type='text' id='meta_title' value='<?=$meta_title?>' size='60' maxlength='60'></td>
     </tr>
-    <tr>
+   <tr style="display:none;">
       <th width='30%'><strong>META Keywords（栏目关键词）</strong><br/>针对搜索引擎设置的关键词</th>
       <td><textarea name='setting[meta_keywords]' id='meta_keywords' style="width:90%;height:40px"><?=$meta_keywords?></textarea></td>
     </tr>
-    <tr>
-      <th width='30%'><strong>META Description（栏目描述）</strong><br/>针对搜索引擎设置的网页描述</th>
+     <tr>
+      <th><strong>栏目描述</strong></th>
       <td><textarea name='setting[meta_description]' id='meta_description' style="width:90%;height:50px"><?=$meta_description?></textarea></td>
     </tr>
   </tbody>
@@ -249,7 +249,9 @@ include admin_tpl('header');
     </tr>
     <tr>
       <th><strong>单网页图片</strong></th>
-      <td><input name='category[image]' type='text' id='image' value='<?=$image?>' size='40' maxlength='50'> <?=file_select('image', $catid, 1)?></td>
+      <td><input name='category[image]' type='text' id='image' value='<?=$image?>' size='40' maxlength='50'> <?=file_select('image', $catid, 1)?>
+        <input type="button" name="thumb_upimage" id="thumb_upimage" value="上传图片" style="width:60px" onclick="javascript:openwinx('?mod=wslm&amp;file=upload_field&amp;uploadtext=image&amp;modelid=36&amp;catid=36&amp;fieldid=1023','upload','450','350')" class="button_style">
+      </td>
     </tr>
     <tr>
       <th width='30%'><strong>单网页模板</strong></th>
@@ -281,16 +283,16 @@ include admin_tpl('header');
       <th width='30%'><strong>查看权限</strong></th>
       <td><?=form::checkbox($GROUP, 'priv_groupid', 'priv_groupid', $priv_groupids)?></td>
     </tr>
-    <tr>
+    <tr style="display:none;">
       <th width='30%'><strong>META Title（单网页标题）</strong><br/>针对搜索引擎设置的标题</th>
       <td><input name='setting[meta_title]' type='text' id='meta_title' value='<?=$meta_title?>' size='60' maxlength='60'></th>
     </tr>
-    <tr>
+    <tr style="display:none;">
       <th width='30%'><strong>META Keywords（单网页关键词）</strong><br/>针对搜索引擎设置的关键词</th>
       <td><textarea name='setting[meta_keywords]' cols='100' rows='7' id='meta_keywords'><?=$meta_keywords?></textarea></td>
     </tr>
     <tr>
-      <th width='30%'><strong>META Description（单网页描述）</strong><br/>针对搜索引擎设置的网页描述</th>
+      <th width='30%'><strong>描述</strong></th>
       <td><textarea name='setting[meta_description]' cols='100' rows='7' id='meta_description'><?=$meta_description?></textarea></td>
     </tr>
   <tr>

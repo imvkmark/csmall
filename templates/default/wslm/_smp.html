@@ -1,3 +1,6 @@
+{template 'wslm', 'header'}
+{template 'wslm', 'footer'}
+
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -130,17 +133,19 @@ get 标签可调用本系统和外部数据，适合熟悉SQL语句的人使用�
     标题：{str_cut($r[title], 50)} URL：{$r[url]} 更新日期：{date('Y-m-d', $r[updatetime])} 
 {/get}
 3、带分页，示例（调用栏目ID为1通过审核的10条信息，标题长度不超过25个汉字，显示更新日期，带分页）：
-{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_thumbnews` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+
+{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_thumbnews` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC" catid="" rows="" return="" page="$pages"}
 {get sql="$sql" rows="10" page="$page"}
 {str_cut($r[title], 50)}
 {$r[url]}
 {date('Y-m-d', $r[updatetime])}
+{date('Y-m-d', $r[inputtime])}
 {str_cut(strip_tags($r[content]),49,'..')}
 <a href="{$r[url]}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
 <a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],49,'..')}</a>
 <a href="{$CATEGORY[55][url]}" title="{$CATEGORY[55][catname]}">{$CATEGORY[55][catname]}</a>
 {/get}
-{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_contact` b WHERE a.contentid=b.contentid AND a.status=99  ".get_sql_catid($catid)." ORDER BY a.listorder DESC";}
+{php $sql = "SELECT a.*,b.* FROM `mg_content` a, `mg_c_contact` b WHERE a.contentid=b.contentid AND a.status=99 ORDER BY a.listorder DESC a.inputtime DESC"}
 {get sql="$sql" rows="10" page="$pages"}
     <div class="contact-item">
         <div class="contact-title">
@@ -152,6 +157,7 @@ get 标签可调用本系统和外部数据，适合熟悉SQL语句的人使用�
         </div>
     </div>
 {/get}
+
 分页：{$pages}
 4、自定义返回变量，示例（调用栏目ID为1通过审核的10条信息，标题长度不超过25个汉字，显示更新日期，返回变量为 $v）：
 {get sql="select * from wslm_content where catid=1 and status=99 order by updatetime desc" rows="10" return="v"}

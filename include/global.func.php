@@ -89,7 +89,7 @@ function cpages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array()
 
 		if($curr_page>0)
 		{
-			$multipage .= $catid ? '<a href="'.$url->category($catid, $curr_page-1, 1, 1).'"><img src="images/p1.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $curr_page-1, $array).'"><img src="images/p1.jpg" align="absmiddle" /></a> ';
+			$multipage .= $catid ? '<a href="'.$url->category($catid, $curr_page-1, 1, 1).'">上一页</a> ' : '<a href="'.pageurl($urlrule, $curr_page-1, $array).'">上一页</a> ';
 			if($curr_page==1)
 			{
 				$multipage .= $catid ? '<a href="'.$url->category($catid, 1, 1, 1).'" class="a_h">1</a> ' : '<a href="'.pageurl($urlrule, 1, $array).'" class="a_h">1</a> ';
@@ -118,16 +118,16 @@ function cpages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array()
 		{
 			if($curr_page<$pages-7 && $more)
 			{
-				$multipage .= $catid ? '.. <a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : ' .. <a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+				$multipage .= $catid ? '.. <a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'">下一页</a> ' : ' .. <a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'">下一页</a> ';
 			}
 			else
 			{
-				$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+				$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">'.$pages.'</a> <a href="'.$url->category($catid, $curr_page+1, 1, 1).'">下一页</a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'">下一页</a> ';
 			}
 		}
 		elseif($curr_page==$pages)
 		{
-			$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'" class="a_h">'.$pages.'</a> <a href="'.$url->category($catid, $pages, 1, 1).'"><img src="images/p2.jpg" align="absmiddle" /></a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'" class="a_h">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'"><img src="images/p2.jpg" align="absmiddle" /></a> ';
+			$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'" class="a_h">'.$pages.'</a> <a href="'.$url->category($catid, $pages, 1, 1).'">下一页</a> ' : '<a href="'.pageurl($urlrule, $pages, $array).'" class="a_h">'.$pages.'</a> <a href="'.pageurl($urlrule, $curr_page+1, $array).'">下一页</a> ';
 		}
 		//$multipage .= $catid ? '<a href="'.$url->category($catid, $pages, 1, 1).'">&gt;&gt;</a>' : '<a href="'.pageurl($urlrule, $pages, $array).'">&gt;&gt;</a>';
 	}
